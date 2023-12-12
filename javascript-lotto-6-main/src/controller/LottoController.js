@@ -11,6 +11,8 @@ class LottoController {
 
   #outputView;
 
+  #lottos;
+
   constructor(inputView, outputView) {
     // param: service
     // this.#service = service;
@@ -37,10 +39,12 @@ class LottoController {
   }
 
   #printLottos(numberOfPurchase) {
-    const lottosString = Array.from({ length: numberOfPurchase }, () => {
+    this.#lottos = Array.from({ length: numberOfPurchase }, () => {
       const lottoNumber = this.#generateLottoNumber();
-      return new Lotto(lottoNumber).lottoString();
+      return new Lotto(lottoNumber);
     });
+
+    const lottosString = this.#lottos.map(lotto => lotto.lottoString());
     this.#outputView.printLottosString(lottosString);
 
     return this.#inputWinningNumbers();
@@ -57,15 +61,27 @@ class LottoController {
 
   async #inputWinningNumbers() {
     const winningNumbers = await this.#inputView.readWinningNumbers();
-    const formattedWinningNumbers = new WinningNumbers(winningNumbers);
+    const formattedWinningNumbers = new WinningNumbers(winningNumbers).getFormattedWinningNumbers();
 
-    this.#inputBonusNumber();
+    this.#inputBonusNumber(formattedWinningNumbers);
   }
 
-  async #inputBonusNumber() {
+  async #inputBonusNumber(formattedWinningNumbers) {
     const bonusNumber = await this.#inputView.readBonusNumber();
-    const formattedBonusNumber = new BonusNumber(bonusNumber);
+    const formattedBonusNumber = new BonusNumber(bonusNumber).getFormattedBonusNumber();
+
+    return this.#printResult(formattedWinningNumbers, formattedBonusNumber);
+  }
+
+  #printResult(formattedWinningNumbers, formattedBonusNumber) {
     this.#outputView.printResultHeader();
+    const matchResult = [0, 0, 0, 0, 0, 0];
+    this.#lottos.forEach(lotto => {
+      const index = lotto.checkLotto(formattedWinningNumbers, formattedBonusNumber);
+      matchResult[index + 1] += 1;
+    });
+    
+    this.#outputView.printResult();
   }
 }
 

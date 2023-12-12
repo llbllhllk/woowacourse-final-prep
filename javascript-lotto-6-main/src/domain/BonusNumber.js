@@ -6,7 +6,7 @@ class BonusNumber {
     this.#formattedBonusNumber = this.#formatBonusNumber(bonusNumber);
   }
 
-  getFormattedCoachNames() {
+  getFormattedBonusNumber() {
     return this.#formattedBonusNumber;
   }
 

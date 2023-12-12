@@ -16,6 +16,10 @@ const OutputView = {
   printLottosString(lottosString) {
     lottosString.forEach(lottoString => Console.print(lottoString));
   },
+
+  printResult() {
+    
+  }
 };
 
 export default OutputView;

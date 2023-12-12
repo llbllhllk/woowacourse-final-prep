@@ -6,7 +6,7 @@ class WinningNumbers {
     this.#formattedWinningNumbers = this.#formatWinningNumbers(winningNumbers);
   }
 
-  getFormattedCoachNames() {
+  getFormattedWinningNumbers() {
     return this.#formattedWinningNumbers;
   }
 
@@ -21,7 +21,7 @@ class WinningNumbers {
   #formatWinningNumbers(winningNumbers) {
     return winningNumbers
       .split(',')
-      .map(element => element.trim())
+      .map(element => Number(element.trim()))
       .filter(Boolean);
   }
 }
