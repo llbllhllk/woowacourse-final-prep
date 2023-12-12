@@ -1,4 +1,4 @@
-import CarNames from '../../src/domain/CarNames.js';
+import CarNames from '../src/domain/CarNames.js';
 
 describe('CarNames 클래스 테스트', () => {
   describe('getFormattedCarNames 메서드는 carNames를 입력받아 자동차 배열을 반환한다.', () => {
