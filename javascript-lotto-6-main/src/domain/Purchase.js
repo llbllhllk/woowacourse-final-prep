@@ -6,7 +6,7 @@ class Purchase {
     this.#formattedInput = this.#formatPurchase(purchase);
   }
 
-  getFormattedCoachNames() {
+  getFormattedAmount() {
     return this.#formattedInput;
   }
 

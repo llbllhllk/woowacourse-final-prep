@@ -22,8 +22,14 @@ class LottoController {
 
   async #inputPurchase() {
     const amount = await this.#inputView.readPurchase();
-    const formattedAmount = new Purchase(amount);
+    const formattedAmount = new Purchase(amount).getFormattedAmount();
 
+    return this.#printNumberOfPurchase(formattedAmount);
+  }
+
+  #printNumberOfPurchase(formattedAmount) {
+    const numberOfPurchase = formattedAmount / 1000;
+    
     return this.#inputWinningNumbers();
   }
 
