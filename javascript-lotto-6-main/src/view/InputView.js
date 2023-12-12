@@ -1,14 +1,12 @@
 import { Console } from '@woowacourse/mission-utils';
-import MESSAGE from '../constants/message.js';
 import reTry from '../utils/reTry.js';
 
 const InputView = {
-  async read() {
+  async readPurchase() {
     return reTry(async () => {
-      const returnValue = await Console.readLineAsync();
-      // Validator
+      const amount = await Console.readLineAsync('구입금액을 입력해 주세요.\n');
 
-      return returnValue;
+      return amount;
     });
   },
 };

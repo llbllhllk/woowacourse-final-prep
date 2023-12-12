@@ -12,7 +12,15 @@ class LottoController {
     this.#outputView = outputView;
   }
 
-  start() {}
+  start() {
+    return this.#inputPurchase();
+  }
+
+  async #inputPurchase() {
+    const amount = await this.#inputView.readPurchase();
+
+    console.log(amount);
+  }
 }
 
 export default LottoController;
