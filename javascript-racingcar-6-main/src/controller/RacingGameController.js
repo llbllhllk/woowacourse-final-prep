@@ -26,7 +26,11 @@ class RacingGameController {
     const attempts = await this.#inputView.readAttempts();
     const formattedAttempts = new Attempts(attempts);
 
-    console.log(formattedAttempts);
+    return this.printResult();
+  }
+
+  printResult() {
+    this.#outputView.printResultHeaderString();
   }
 }
 
