@@ -3,7 +3,7 @@ import BonusNumber from '../domain/BonusNumber.js';
 import Lotto from '../domain/Lotto.js';
 import Purchase from '../domain/Purchase.js';
 import WinningNumbers from '../domain/WinningNumbers.js';
-import CONSTANTS from '../constants/constants.js';
+import reTry from '../utils/reTry.js';
 
 class LottoController {
   // #service;
@@ -26,10 +26,12 @@ class LottoController {
   }
 
   async #inputPurchase() {
-    const amount = await this.#inputView.readPurchase();
-    const formattedAmount = new Purchase(amount).getFormattedAmount();
+    return reTry(async () => {
+      const amount = await this.#inputView.readPurchase();
+      const formattedAmount = new Purchase(amount).getFormattedAmount();
 
-    return this.#printNumberOfPurchase(formattedAmount);
+      return this.#printNumberOfPurchase(formattedAmount);
+    });
   }
 
   #printNumberOfPurchase(formattedAmount) {
@@ -61,17 +63,23 @@ class LottoController {
   }
 
   async #inputWinningNumbers(formattedAmount) {
-    const winningNumbers = await this.#inputView.readWinningNumbers();
-    const formattedWinningNumbers = new WinningNumbers(winningNumbers).getFormattedWinningNumbers();
+    return reTry(async () => {
+      const winningNumbers = await this.#inputView.readWinningNumbers();
+      const formattedWinningNumbers = new WinningNumbers(
+        winningNumbers,
+      ).getFormattedWinningNumbers();
 
-    this.#inputBonusNumber(formattedWinningNumbers, formattedAmount);
+      return this.#inputBonusNumber(formattedWinningNumbers, formattedAmount);
+    });
   }
 
   async #inputBonusNumber(formattedWinningNumbers, formattedAmount) {
-    const bonusNumber = await this.#inputView.readBonusNumber();
-    const formattedBonusNumber = new BonusNumber(bonusNumber).getFormattedBonusNumber();
+    return reTry(async () => {
+      const bonusNumber = await this.#inputView.readBonusNumber();
+      const formattedBonusNumber = new BonusNumber(bonusNumber).getFormattedBonusNumber();
 
-    return this.#printResult(formattedWinningNumbers, formattedBonusNumber, formattedAmount);
+      return this.#printResult(formattedWinningNumbers, formattedBonusNumber, formattedAmount);
+    });
   }
 
   #printResult(formattedWinningNumbers, formattedBonusNumber, formattedAmount) {
