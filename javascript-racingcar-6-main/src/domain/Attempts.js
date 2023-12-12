@@ -6,7 +6,7 @@ class Attempts {
     this.#formattedAttempts = this.#formatAttempts(attempts);
   }
 
-  getFormattedCoachNames() {
+  getFormattedAttempts() {
     return this.#formattedAttempts;
   }
 
