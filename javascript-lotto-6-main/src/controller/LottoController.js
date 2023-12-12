@@ -1,3 +1,5 @@
+import Purchase from '../domain/Purchase.js';
+
 class LottoController {
   // #service;
 
@@ -18,6 +20,8 @@ class LottoController {
 
   async #inputPurchase() {
     const amount = await this.#inputView.readPurchase();
+    const formattedAmount = new Purchase(amount);
+    console.log(formattedAmount);
 
     return this.#inputWinningNumbers();
   }
