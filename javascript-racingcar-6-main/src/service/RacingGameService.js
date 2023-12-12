@@ -1,3 +1,4 @@
+import CONSTANTS from '../constants/constants.js';
 import Car from '../domain/Car.js';
 
 class RacingGameService {
@@ -20,17 +21,22 @@ class RacingGameService {
   }
 
   getStatus() {
-    return this.#cars.map(car => car.statusString().split(' : '));
+    return this.#cars.map(car => car.statusString().split(CONSTANTS.status.separator));
   }
 
   getMoveMax() {
-    return Math.max(...this.#cars.map(car => car.statusString().split(' : ')[1].length));
+    return Math.max(
+      ...this.#cars.map(
+        car => car.statusString().split(CONSTANTS.status.separator)[CONSTANTS.status.move].length,
+      ),
+    );
   }
 
   getWinners() {
     return this.getStatus()
       .map(car => {
-        if (car[1].length >= this.getMoveMax()) return car[0];
+        if (car[CONSTANTS.status.move].length >= this.getMoveMax())
+          return car[CONSTANTS.status.name];
       })
       .filter(Boolean);
   }

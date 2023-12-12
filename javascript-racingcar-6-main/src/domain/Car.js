@@ -1,4 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
+import CONSTANTS from '../constants/constants.js';
 
 class Car {
   #name;
@@ -11,14 +12,14 @@ class Car {
   }
 
   move() {
-    const randomNumber = Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) {
-      this.#moveStatus.push('-');
+    const randomNumber = Random.pickNumberInRange(CONSTANTS.random.from, CONSTANTS.random.to);
+    if (randomNumber >= CONSTANTS.car.move) {
+      this.#moveStatus.push(CONSTANTS.car.status);
     }
   }
 
   statusString() {
-    return `${this.#name} : ${this.#moveStatus.join('')}`;
+    return `${this.#name} : ${this.#moveStatus.join(CONSTANTS.string.empty)}`;
   }
 }
 

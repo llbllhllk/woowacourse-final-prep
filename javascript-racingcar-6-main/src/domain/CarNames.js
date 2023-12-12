@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class CarNames {
   #formattedCarNamees;
 
@@ -12,13 +15,13 @@ class CarNames {
 
   #validate(carNames) {
     carNames.forEach(name => {
-      if (name.length > 5) throw new Error('[ERROR] 자동차 이름은 5자 이하여야합니다.');
+      if (name.length > CONSTANTS.carNames.maxLength) throw new Error(ERROR.carNames.length);
     });
   }
 
   #formatCarNames(carNames) {
     return carNames
-      .split(',')
+      .split(CONSTANTS.carNames.separator)
       .map(element => element.trim())
       .filter(Boolean);
   }

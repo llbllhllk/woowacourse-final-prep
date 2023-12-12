@@ -1,3 +1,5 @@
+import ERROR from '../constants/error.js';
+
 class Attempts {
   #formattedAttempts;
 
@@ -11,7 +13,7 @@ class Attempts {
   }
 
   #validate(attempts) {
-    if (Number.isNaN(attempts)) throw new Error('[ERROR] 숫자가 아닙니다.');
+    if (Number.isNaN(attempts)) throw new Error(ERROR.attempts.isNaN);
   }
 
   #formatAttempts(attempts) {
