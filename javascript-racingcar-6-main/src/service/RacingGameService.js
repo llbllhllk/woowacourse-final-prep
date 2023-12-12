@@ -8,7 +8,7 @@ class RacingGameService {
     this.#cars = [];
   }
 
-  getCars(formattedCarNames) {
+  cars(formattedCarNames) {
     return (this.#cars = formattedCarNames.map(name => new Car(name)));
   }
 
@@ -16,15 +16,15 @@ class RacingGameService {
     this.#cars.forEach(car => car.move());
   }
 
-  getStatusString() {
+  statusString() {
     return this.#cars.map(car => car.statusString());
   }
 
-  getStatus() {
+  status() {
     return this.#cars.map(car => car.statusString().split(CONSTANTS.status.separator));
   }
 
-  getMoveMax() {
+  moveMax() {
     return Math.max(
       ...this.#cars.map(
         car => car.statusString().split(CONSTANTS.status.separator)[CONSTANTS.status.move].length,
@@ -32,11 +32,10 @@ class RacingGameService {
     );
   }
 
-  getWinners() {
-    return this.getStatus()
+  winners() {
+    return this.status()
       .map(car => {
-        if (car[CONSTANTS.status.move].length >= this.getMoveMax())
-          return car[CONSTANTS.status.name];
+        if (car[CONSTANTS.status.move].length >= this.moveMax()) return car[CONSTANTS.status.name];
       })
       .filter(Boolean);
   }

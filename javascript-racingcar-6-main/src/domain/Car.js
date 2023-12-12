@@ -13,9 +13,7 @@ class Car {
 
   move() {
     const randomNumber = Random.pickNumberInRange(CONSTANTS.random.from, CONSTANTS.random.to);
-    if (randomNumber >= CONSTANTS.car.move) {
-      this.#moveStatus.push(CONSTANTS.car.status);
-    }
+    if (randomNumber >= CONSTANTS.car.move) this.#moveStatus.push(CONSTANTS.car.status);
   }
 
   statusString() {

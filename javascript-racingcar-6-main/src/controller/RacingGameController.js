@@ -35,11 +35,11 @@ class RacingGameController {
 
   #printResult(formattedCarNames, formattedAttempts) {
     this.#outputView.printResultHeaderString();
-    this.#racingGameService.getCars(formattedCarNames);
+    this.#racingGameService.cars(formattedCarNames);
 
     Array.from({ length: formattedAttempts }, () => {
       this.#racingGameService.moveCars();
-      const statusString = this.#racingGameService.getStatusString();
+      const statusString = this.#racingGameService.statusString();
       this.#outputView.printStatusString(statusString);
     });
 
@@ -47,7 +47,7 @@ class RacingGameController {
   }
 
   #printWinners() {
-    const winners = this.#racingGameService.getWinners();
+    const winners = this.#racingGameService.winners();
     this.#outputView.printWinners(winners);
   }
 }
