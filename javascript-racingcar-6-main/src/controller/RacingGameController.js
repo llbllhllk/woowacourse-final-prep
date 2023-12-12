@@ -23,7 +23,7 @@ class RacingGameController {
     const carNames = await this.#inputView.readCarNames();
     const formattedCarNames = new CarNames(carNames).getFormattedCarNames();
 
-    this.#inputAttempts(formattedCarNames);
+    return this.#inputAttempts(formattedCarNames);
   }
 
   async #inputAttempts(formattedCarNames) {
