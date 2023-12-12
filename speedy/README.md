@@ -225,5 +225,5 @@ static #validateSeparator(winningNumbers) {
     .map(number => number.trim());
   const emptyNumberCount = formattedWinningNumbers.filter(number => !number.trim()).length;
   if (emptyNumberCount > CONSTANTS.number.zero) throw new Error(ERROR.winningNumbers.separator);
-}
+} 
 ```
