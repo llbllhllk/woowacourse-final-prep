@@ -50,6 +50,7 @@ class RacingGameController {
         if (car[1].length >= max) return car[0];
       })
       .filter(Boolean);
+    this.#outputView.printWinners(winners)
   }
 }
 
