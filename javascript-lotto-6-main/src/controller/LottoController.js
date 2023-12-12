@@ -29,6 +29,7 @@ class LottoController {
 
   #printNumberOfPurchase(formattedAmount) {
     const numberOfPurchase = formattedAmount / 1000;
+    this.#outputView.printNumberOfPurchase(numberOfPurchase);
     
     return this.#inputWinningNumbers();
   }
