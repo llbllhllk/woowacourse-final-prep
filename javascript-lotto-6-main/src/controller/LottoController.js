@@ -19,7 +19,13 @@ class LottoController {
   async #inputPurchase() {
     const amount = await this.#inputView.readPurchase();
 
-    console.log(amount);
+    return this.#inputWinningNumbers();
+  }
+
+  async #inputWinningNumbers() {
+    const winningNumbers = await this.#inputView.readWinningNumbers();
+
+    console.log(winningNumbers);
   }
 }
 
