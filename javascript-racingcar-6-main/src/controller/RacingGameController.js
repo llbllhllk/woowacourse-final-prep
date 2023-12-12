@@ -1,3 +1,5 @@
+import CarNames from '../domain/CarNames.js';
+
 class RacingGameController {
   #inputView;
 
@@ -14,14 +16,13 @@ class RacingGameController {
 
   async #inputCarNames() {
     const carNames = await this.#inputView.readCarNames();
+    const formattedCarNames = new CarNames(carNames);
 
     this.#inputAttempts();
   }
 
   async #inputAttempts() {
     const attempts = await this.#inputView.readAttempts();
-
-    console.log(attempts);
   }
 }
 
