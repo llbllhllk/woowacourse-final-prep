@@ -41,7 +41,8 @@ class LottoController {
       const lottoNumber = this.#generateLottoNumber();
       return new Lotto(lottoNumber).lottoString();
     });
-    
+    this.#outputView.printLottosString(lottosString);
+
     return this.#inputWinningNumbers();
   }
 

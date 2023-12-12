@@ -12,6 +12,10 @@ const OutputView = {
   printNumberOfPurchase(numberOfPurchase) {
     Console.print(`${numberOfPurchase}개를 구매했습니다.`);
   },
+
+  printLottosString(lottosString) {
+    lottosString.forEach(lottoString => Console.print(lottoString));
+  },
 };
 
 export default OutputView;

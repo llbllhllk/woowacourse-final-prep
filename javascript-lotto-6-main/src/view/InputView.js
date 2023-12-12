@@ -12,7 +12,7 @@ const InputView = {
 
   async readWinningNumbers() {
     return reTry(async () => {
-      const winningNumbers = await Console.readLineAsync('당첨 번호를 입력해 주세요.\n');
+      const winningNumbers = await Console.readLineAsync('\n당첨 번호를 입력해 주세요.\n');
 
       return winningNumbers;
     });
