@@ -92,6 +92,8 @@ class LottoController {
     const multipliedValues = matchResult.map((element, index) => element * matchValues[index]);
     const totalPrize = multipliedValues.reduce((acc, currentValue) => acc + currentValue, 0);
     const totalProfit = ((totalPrize / formattedAmount) * 100).toFixed(1);
+
+    this.#outputView.printProfit(totalProfit);
   }
 }
 
