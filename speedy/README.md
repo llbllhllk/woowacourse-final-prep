@@ -1,4 +1,26 @@
-### 패키지 설치 전 node version 확인
+## 구현 순서
+
+> ### 요구사항 구현
+>
+> 1. 프로젝트 구성
+> 2. 사용자 입력 기능 구현
+> 3. 간단한 출력 기능 구현
+> 4. 사용자 입력 관련 Domain 구성
+> 5. 비즈니스 로직 구현
+> 6. ApplicationTest 확인
+>
+> ### 리팩토링
+>
+> 1. service 분리
+> 2. 상수화
+>
+> ### 테스트
+>
+> 1. test 작성
+
+<br />
+
+## ✅ 패키지 설치 전 node version 확인
 
 ```bash
 node -v  // 버전 확인
@@ -8,7 +30,7 @@ nvm use 14.0.0  // 버전 사용
 
 <br />
 
-### branch 생성 및 패키지 설치
+## 😎 branch 생성 및 패키지 설치
 
 ```bash
 node -v  // 버전 확인
@@ -18,13 +40,7 @@ nvm use 14.0.0  // 버전 사용
 
 <br />
 
-### reTry.js 필요 유무 확인
-
-- 사용자로 부터 입력을 다시 받고 에러메시지를 로그에 찍는지 확인한다.
-
-<br />
-
-### 📝 기능 목록 작성
+## 📝 기능 목록 작성
 
 ```md
 ## 📄 기능 목록
@@ -42,7 +58,7 @@ nvm use 14.0.0  // 버전 사용
 
 ## 🖥️ view
 
-### InputView.js
+### InputView.js(+ retry.js)
 
 ```javascript
 import { Console } from '@woowacourse/mission-utils';
@@ -81,6 +97,7 @@ export default OutputView;
 <br />
 
 ## 📂 utils
+
 ### retry.js
 
 ```java
@@ -97,6 +114,46 @@ const reTry = async callback => {
 };
 
 export default reTry;
+```
+
+<br />
+
+## 🕹️ Controller
+
+### Controller.js
+
+```javascript
+class Controller {
+  // #service;
+
+  #inputView;
+
+  #outputView;
+
+  constructor(inputView, outputView) {
+    // param: service
+    // this.#service = service;
+    this.#inputView = inputView;
+    this.#outputView = outputView;
+  }
+
+  start() {}
+}
+
+export default Controller;
+```
+
+### 특정 개수 만큼 사용자 입력을 반복적으로 받고 싶은 경우
+
+```javascript
+  async #inputUnwantedMenu() {
+    const coachNames = this.#lunchMenuService.getCoachNames();
+
+		await coachNames.reduce(async (promise, name) => {
+      await promise;
+      const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
+    }, Promise.resolve());
+  }
 ```
 
 <br />
@@ -121,30 +178,6 @@ class App {
 }
 
 export default App;
-```
-
-<br />
-
-## 🕹️ Controller
-
-```javascript
-class Controller {
-  // #service;
-
-  #inputView;
-
-  #outputView;
-
-  constructor(inputView, outputView) { // param: service
-    // this.#service = service;
-    this.#inputView = inputView;
-    this.#outputView = outputView;
-  }
-
-  start() {}
-}
-
-export default Controller;
 ```
 
 <br />
@@ -177,6 +210,7 @@ export default Input;
 ```
 
 - **(,) 구분 formating**
+
 ```javascript
 #format(stirng) {
   return string
@@ -188,7 +222,8 @@ export default Input;
 
 <br />
 
-## 🎯Validation
+## 🎯 Validation
+
 - **아무 값도 입력하지 않았을 경우**
 
 ```javascript
@@ -201,7 +236,7 @@ static #validateEmpty(numbers) {
 
 ```javascript
 static #validateNaN(numbers) {
-  if (Number.isNaN(Number(numbers))) throw new Error(ERROR.numbers.notANumber); 
+  if (Number.isNaN(Number(numbers))) throw new Error(ERROR.numbers.notANumber);
 }
 ```
 
@@ -243,5 +278,35 @@ static #validateSeparator(winningNumbers) {
     .map(number => number.trim());
   const emptyNumberCount = formattedWinningNumbers.filter(number => !number.trim()).length;
   if (emptyNumberCount > CONSTANTS.number.zero) throw new Error(ERROR.winningNumbers.separator);
-} 
+}
+```
+
+## ⛳️ Constants
+
+### constants.js
+
+```jsx
+const CONSTANTS = Object.freeze({});
+
+export default CONSTANTS;
+```
+
+### error.js
+
+```jsx
+const ERROR = Object.freeze({});
+
+export default ERROR;
+```
+
+### message.js
+
+```jsx
+const read = Object.freeze({});
+
+const print = Object.freeze({});
+
+const MESSAGE = Object.freeze({});
+
+export default MESSAGE;
 ```
