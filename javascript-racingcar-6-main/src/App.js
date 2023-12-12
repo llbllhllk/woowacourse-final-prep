@@ -6,8 +6,7 @@ class App {
   #racingGameController;
 
   constructor() {
-    const Service = new Service();
-    this.#racingGameController = new RacingGameController(Service, InputView, OutputView);
+    this.#racingGameController = new RacingGameController( InputView, OutputView);
   }
 
   async play() {
