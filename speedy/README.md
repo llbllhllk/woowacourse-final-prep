@@ -6,6 +6,8 @@ nvm install 14.0.0  // 버전 설치
 nvm use 14.0.0  // 버전 사용
 ```
 
+<br />
+
 ### branch 생성 및 패키지 설치
 
 ```bash
@@ -14,9 +16,13 @@ nvm install 14.0.0  // 버전 설치
 nvm use 14.0.0  // 버전 사용
 ```
 
+<br />
+
 ### reTry.js 필요 유무 확인
 
 - 사용자로 부터 입력을 다시 받고 에러메시지를 로그에 찍는지 확인한다.
+
+<br />
 
 ### 📝 기능 목록 작성
 
@@ -31,6 +37,8 @@ nvm use 14.0.0  // 버전 사용
 
 ## 🎯 예외 상황
 ```
+
+<br />
 
 ## 🖥️ view
 
@@ -70,6 +78,8 @@ const OutputView = {
 export default OutputView;
 ```
 
+<br />
+
 ## 📂 utils
 ### retry.js
 
@@ -88,6 +98,8 @@ const reTry = async callback => {
 
 export default reTry;
 ```
+
+<br />
 
 ## 🦴 App
 
@@ -111,6 +123,8 @@ class App {
 export default App;
 ```
 
+<br />
+
 ## 🕹️ Controller
 
 ```javascript
@@ -132,6 +146,8 @@ class Controller {
 
 export default Controller;
 ```
+
+<br />
 
 ## 🗂️ Domain
 
@@ -169,6 +185,8 @@ export default Input;
     .filter(Boolean);
 }
 ```
+
+<br />
 
 ## 🎯Validation
 - **아무 값도 입력하지 않았을 경우**
