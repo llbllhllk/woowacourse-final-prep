@@ -58,21 +58,16 @@ nvm use 14.0.0  // 버전 사용
 
 ## 🖥️ view
 
-### InputView.js(+ retry.js)
+### InputView.js
 
 ```javascript
 import { Console } from '@woowacourse/mission-utils';
-import MESSAGE from '../constants/message.js';
-import reTry from '../utils/reTry.js';
 
 const InputView = {
   async read() {
-    return reTry(async () => {
-      const returnValue = await Console.readLineAsync();
-      // Validator
+    const returnValue = await Console.readLineAsync();
 
-      return returnValue;
-    });
+    return returnValue;
   },
 };
 
@@ -83,7 +78,6 @@ export default InputView;
 
 ```javascript
 import { Console } from '@woowacourse/mission-utils';
-import MESSAGE from '../constants/message.js';
 
 const OutputView = {
   printString() {
@@ -143,11 +137,25 @@ class Controller {
 export default Controller;
 ```
 
+### reTry 적용
+
+```javascript
+  async #inputPurchase() {
+    return reTry(async () => {
+      const amount = await this.#inputView.readPurchase();
+      const formattedAmount = new Purchase(amount).getFormattedAmount();
+
+      return this.#printNumberOfPurchase(formattedAmount);
+    });
+  }
+```
+
 ### 특정 개수 만큼 사용자 입력을 반복적으로 받고 싶은 경우
 
 ```javascript
   async #inputUnwantedMenu() {
     const coachNames = this.#lunchMenuService.getCoachNames();
+
 		await coachNames.reduce(async (promise, name) => {
       await promise;
       const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
@@ -279,8 +287,6 @@ static #validateSeparator(winningNumbers) {
   if (emptyNumberCount > CONSTANTS.number.zero) throw new Error(ERROR.winningNumbers.separator);
 }
 ```
-
-<br />
 
 ## ⛳️ Constants
 
