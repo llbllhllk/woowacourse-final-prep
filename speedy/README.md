@@ -99,8 +99,8 @@ class App {
   #Controller;
 
   constructor() {
-    const Service = new Service();
-    this.#Controller = new Controller(Service, InputView, OutputView);
+    // const Service = new Service();
+    this.#Controller = new Controller(InputView, OutputView);
   }
 
   async play() {
@@ -114,15 +114,15 @@ export default App;
 ## 🕹️ Controller
 
 ```javascript
-class LunchMenuController {
-  #service;
+class Controller {
+  // #service;
 
   #inputView;
 
   #outputView;
 
-  constructor(service, inputView, outputView) {
-    this.#service = service;
+  constructor(inputView, outputView) { // param: service
+    // this.#service = service;
     this.#inputView = inputView;
     this.#outputView = outputView;
   }
@@ -130,7 +130,7 @@ class LunchMenuController {
   start() {}
 }
 
-export default LunchMenuController;
+export default Controller;
 ```
 
 ## 🗂️ Domain
