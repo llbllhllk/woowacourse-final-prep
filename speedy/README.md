@@ -148,7 +148,6 @@ export default Controller;
 ```javascript
   async #inputUnwantedMenu() {
     const coachNames = this.#lunchMenuService.getCoachNames();
-
 		await coachNames.reduce(async (promise, name) => {
       await promise;
       const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
@@ -280,6 +279,8 @@ static #validateSeparator(winningNumbers) {
   if (emptyNumberCount > CONSTANTS.number.zero) throw new Error(ERROR.winningNumbers.separator);
 }
 ```
+
+<br />
 
 ## ⛳️ Constants
 
