@@ -3,11 +3,14 @@ import Car from '../domain/Car.js';
 import CarNames from '../domain/CarNames.js';
 
 class RacingGameController {
+  #racingGameService;
+
   #inputView;
 
   #outputView;
 
-  constructor(inputView, outputView) {
+  constructor(racingGameService, inputView, outputView) {
+    this.#racingGameService = racingGameService;
     this.#inputView = inputView;
     this.#outputView = outputView;
   }
@@ -32,25 +35,20 @@ class RacingGameController {
 
   #printResult(formattedCarNames, formattedAttempts) {
     this.#outputView.printResultHeaderString();
-    const cars = formattedCarNames.map(name => new Car(name));
+    this.#racingGameService.getCars(formattedCarNames);
+
     Array.from({ length: formattedAttempts }, () => {
-      cars.forEach(car => car.move());
-      const statusString = cars.map(car => car.statusString());
+      this.#racingGameService.moveCars();
+      const statusString = this.#racingGameService.getStatusString();
       this.#outputView.printStatusString(statusString);
     });
 
-    return this.#printWinners(cars);
+    return this.#printWinners();
   }
 
-  #printWinners(cars) {
-    const carStatus = cars.map(car => car.statusString().split(' : '));
-    const max = Math.max(...cars.map(car => car.statusString().split(' : ')[1].length));
-    const winners = carStatus
-      .map(car => {
-        if (car[1].length >= max) return car[0];
-      })
-      .filter(Boolean);
-    this.#outputView.printWinners(winners)
+  #printWinners() {
+    const winners = this.#racingGameService.getWinners();
+    this.#outputView.printWinners(winners);
   }
 }
 
