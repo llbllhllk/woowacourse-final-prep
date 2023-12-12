@@ -31,15 +31,13 @@ class LottoController {
     const winningNumbers = await this.#inputView.readWinningNumbers();
     const formattedWinningNumbers = new WinningNumbers(winningNumbers);
 
-    console.log(formattedWinningNumbers);
     this.#inputBonusNumber();
   }
 
   async #inputBonusNumber() {
     const bonusNumber = await this.#inputView.readBonusNumber();
     const formattedBonusNumber = new BonusNumber(bonusNumber);
-
-    console.log(formattedBonusNumber);
+    this.#outputView.printResultHeader();
   }
 }
 
