@@ -80,8 +80,8 @@ class LottoController {
       const index = lotto.checkLotto(formattedWinningNumbers, formattedBonusNumber);
       matchResult[index + 1] += 1;
     });
-    
-    this.#outputView.printResult();
+
+    this.#outputView.printResult(matchResult);
   }
 }
 
