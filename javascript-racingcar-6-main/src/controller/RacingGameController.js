@@ -32,11 +32,11 @@ class RacingGameController {
 
   printResult(formattedCarNames, formattedAttempts) {
     this.#outputView.printResultHeaderString();
+    const cars = formattedCarNames.map(name => new Car(name));
     Array.from({ length: formattedAttempts }, () => {
-      const cars = formattedCarNames.map(name => new Car(name));
       cars.forEach(car => car.move());
-
-      // this.#outputView.cars.map(car => car.statusString());
+      const statusString = cars.map(car => car.statusString());
+      this.#outputView.printStatusString(statusString);
     });
   }
 }

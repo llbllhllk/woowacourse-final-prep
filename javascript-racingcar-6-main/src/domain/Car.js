@@ -18,7 +18,7 @@ class Car {
   }
 
   statusString() {
-    return `${this.#name} : ${this.#moveStatus.join(' ')}`;
+    return `${this.#name} : ${this.#moveStatus.join('')}`;
   }
 }
 
