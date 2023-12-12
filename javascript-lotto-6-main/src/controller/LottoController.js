@@ -1,3 +1,4 @@
+import BonusNumber from '../domain/BonusNumber.js';
 import Purchase from '../domain/Purchase.js';
 import WinningNumbers from '../domain/WinningNumbers.js';
 
@@ -29,15 +30,16 @@ class LottoController {
   async #inputWinningNumbers() {
     const winningNumbers = await this.#inputView.readWinningNumbers();
     const formattedWinningNumbers = new WinningNumbers(winningNumbers);
-    console.log(formattedWinningNumbers);
 
+    console.log(formattedWinningNumbers);
     this.#inputBonusNumber();
   }
 
   async #inputBonusNumber() {
     const bonusNumber = await this.#inputView.readBonusNumber();
+    const formattedBonusNumber = new BonusNumber(bonusNumber);
 
-    console.log(bonusNumber);
+    console.log(formattedBonusNumber);
   }
 }
 
