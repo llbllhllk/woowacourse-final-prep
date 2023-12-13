@@ -1,3 +1,5 @@
+import CoachName from '../domain/CoachName.js';
+
 class LunchMenuController {
   // #service;
 
@@ -18,7 +20,9 @@ class LunchMenuController {
 
   async #inputCoachName() {
     const coachName = await this.#inputView.readCoachName();
-
+    const formattedCoachName = new CoachName(coachName);
+    console.log(formattedCoachName);
+    
     return this.#inputUnwantedMenu(coachName);
   }
 
