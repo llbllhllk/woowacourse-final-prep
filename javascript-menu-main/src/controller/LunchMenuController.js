@@ -53,8 +53,8 @@ class LunchMenuController {
       return [name, unwantedMenus];
     });
     const recommandMenus = this.#getRecommandMenus(resultArray, categories);
-
     this.#outputView.printResultString(categories, recommandMenus);
+    this.#outputView.printEndString();
   }
 
   #getRecommandMenus(inputArray, categories) {

@@ -18,14 +18,20 @@ const OutputView = {
   },
 
   printCategoryString(categories) {
-    //[ 카테고리 | 한식 | 한식 | 일식 | 중식 | 아시안 ]
     Console.print(`[ 카테고리 | ${categories.join(' | ')} ]`);
   },
 
-  printResultString(categories) {
+  printRecommandMenus(recommandMenus) {
+    recommandMenus.forEach(recommandMenu =>
+      Console.print(`[ ${recommandMenu[0]} | ${recommandMenu[1].join(' | ')} ]`),
+    );
+  },
+
+  printResultString(categories, recommandMenus) {
     this.printResultHeaderString();
     this.printWeekString();
     this.printCategoryString(categories);
+    this.printRecommandMenus(recommandMenus);
   },
 };
 
