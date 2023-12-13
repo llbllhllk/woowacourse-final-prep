@@ -1,4 +1,5 @@
 import LottoController from './controller/LottoController.js';
+import LottoService from './service/LottoService.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 
@@ -6,8 +7,8 @@ class App {
   #lottoController;
 
   constructor() {
-    // const Service = new Service();
-    this.#lottoController = new LottoController(InputView, OutputView);
+    const lottoService = new LottoService();
+    this.#lottoController = new LottoController(lottoService, InputView, OutputView);
   }
 
   async play() {

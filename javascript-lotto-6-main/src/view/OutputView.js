@@ -25,8 +25,8 @@ const OutputView = {
     Console.print(`6개 일치 (2,000,000,000원) - ${matchResult[5]}개`);
   },
 
-  printProfit(totalProfit) {
-    Console.print(`총 수익률은 ${totalProfit}%입니다.`);
+  printProfit(profit) {
+    Console.print(`총 수익률은 ${profit}%입니다.`);
   },
 };
 
