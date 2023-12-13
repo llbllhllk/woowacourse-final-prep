@@ -94,7 +94,7 @@ export default OutputView;
 
 ### retry.js
 
-```java
+```javascript
 import { Console } from '@woowacourse/mission-utils';
 
 const reTry = async callback => {
@@ -140,12 +140,12 @@ export default Controller;
 ### reTry 적용
 
 ```javascript
-  async #inputPurchase() {
+  async #inputData() {
     return reTry(async () => {
-      const amount = await this.#inputView.readPurchase();
-      const formattedAmount = new Purchase(amount).getFormattedAmount();
+      const input = await this.#inputView.read();
+      const formattedInput = new Purchase(input).getFormattedAmount();
 
-      return this.#printNumberOfPurchase(formattedAmount);
+      return this.#printNumberOfPurchase(formattedInput);
     });
   }
 ```
@@ -153,12 +153,12 @@ export default Controller;
 ### 특정 개수 만큼 사용자 입력을 반복적으로 받고 싶은 경우
 
 ```javascript
-  async #inputUnwantedMenu() {
-    const coachNames = this.#lunchMenuService.getCoachNames();
+  async #inputData() {
+    const array = this.#lunchMenuService.getCoachNames();
 
-		await coachNames.reduce(async (promise, name) => {
+		await array.reduce(async (promise, element) => {
       await promise;
-      const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
+      const input = await this.#inputView.read(element);
     }, Promise.resolve());
   }
 ```
@@ -328,7 +328,6 @@ export default MESSAGE;
 describe('~ 클래스 테스트', () => {
   describe('~메서드는 ~를 입력받아 ~를 반환한다.', () => {
     const cases = [
-      { numbers: [1, 2, 3], computerNumbers: [2, 3, 1], expected: 0 },
       { numbers: [1, 2, 3], computerNumbers: [2, 3, 1], expected: 0 },
     ];
 
