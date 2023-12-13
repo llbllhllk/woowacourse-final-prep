@@ -1,15 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
-import MESSAGE from '../constants/message.js';
-import reTry from '../utils/reTry.js';
 
 const InputView = {
-  async read() {
-    return reTry(async () => {
-      const returnValue = await Console.readLineAsync();
-      // Validator
+  async readCoachName() {
+    const coachName = await Console.readLineAsync('코치의 이름을 입력해 주세요. (, 로 구분)\n');
 
-      return returnValue;
-    });
+    return coachName;
   },
 };
 

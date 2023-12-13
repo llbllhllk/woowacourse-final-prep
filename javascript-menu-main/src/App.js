@@ -7,7 +7,7 @@ class App {
 
   constructor() {
     // const Service = new Service();
-    this.#lunchMenuController = new LunchMenuControllerController(InputView, OutputView);
+    this.#lunchMenuController = new LunchMenuController(InputView, OutputView);
   }
 
   async play() {
@@ -16,3 +16,6 @@ class App {
 }
 
 export default App;
+
+const app = new App();
+app.play();

@@ -12,7 +12,15 @@ class LunchMenuController {
     this.#outputView = outputView;
   }
 
-  start() {}
+  start() {
+    return this.#inputCoachName();
+  }
+
+  async #inputCoachName() {
+    const coachName = await this.#inputView.readCoachName();
+
+    console.log(coachName);
+  }
 }
 
 export default LunchMenuController;
