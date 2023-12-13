@@ -1,3 +1,5 @@
+import CONSTANTS from '../constants/constants.js';
+
 class Profit {
   #matchResult;
 
@@ -10,16 +12,16 @@ class Profit {
 
   profit() {
     this.#matchResult.shift();
-    const matchValues = [5000, 50000, 1500000, 30000000, 2000000000];
-    const multipliedValues = this.#multipliedValues(matchValues);
+    const prize = CONSTANTS.prize;
+    const multipliedValues = this.#multipliedValues(prize);
     const totalPrize = this.#totalPrize(multipliedValues);
     const totalProfit = this.#totalProfit(totalPrize);
 
     return totalProfit;
   }
 
-  #multipliedValues(matchValues) {
-    return this.#matchResult.map((element, index) => element * matchValues[index]);
+  #multipliedValues(prize) {
+    return this.#matchResult.map((element, index) => element * prize[index]);
   }
 
   #totalPrize(multipliedValues) {
@@ -27,7 +29,9 @@ class Profit {
   }
 
   #totalProfit(totalPrize) {
-    return ((totalPrize / this.#amount) * 100).toFixed(1);
+    return ((totalPrize / this.#amount) * CONSTANTS.profit.percentage).toFixed(
+      CONSTANTS.rounding.secondRound,
+    );
   }
 }
 

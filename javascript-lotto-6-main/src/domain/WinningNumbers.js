@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class WinningNumbers {
   #formattedWinningNumbers;
 
@@ -11,16 +14,18 @@ class WinningNumbers {
   }
 
   #validate(winningNumbers) {
-    if (winningNumbers.length !== 6) throw new Error('[ERROR] 당첨 번호는 6개 이어야한다.');
+    if (winningNumbers.length !== CONSTANTS.lotto.length)
+      throw new Error(ERROR.winningNumbers.length);
 
     winningNumbers.forEach(number => {
-      if (number < 1 || number > 45) throw new Error('[ERROR] 1~45의 정수값을 가져야합니다.');
+      if (number < CONSTANTS.lotto.min || number > CONSTANTS.lotto.max)
+        throw new Error(ERROR.winningNumbers.range);
     });
   }
 
   #formatWinningNumbers(winningNumbers) {
     return winningNumbers
-      .split(',')
+      .split(CONSTANTS.lotto.separator)
       .map(element => Number(element.trim()))
       .filter(Boolean);
   }

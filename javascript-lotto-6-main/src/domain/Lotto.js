@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class Lotto {
   #numbers;
 
@@ -7,7 +10,7 @@ class Lotto {
   }
 
   lottoString() {
-    return `[${this.#numbers.join(', ')}]`;
+    return `[${this.#numbers.join(CONSTANTS.string.separator)}]`;
   }
 
   checkLotto(winningNumbers, bonusNumber) {
@@ -15,16 +18,16 @@ class Lotto {
     const bonusMatch = this.#numbers.includes(bonusNumber);
 
     switch (matchCount) {
-      case 3:
-        return 0;
-      case 4:
-        return 1;
-      case 5:
-        return bonusMatch ? 3 : 2;
-      case 6:
-        return 4;
+      case CONSTANTS.matchCount.three:
+        return CONSTANTS.matchIndex.three;
+      case CONSTANTS.matchCount.four:
+        return CONSTANTS.matchIndex.four;
+      case CONSTANTS.matchCount.five:
+        return bonusMatch ? CONSTANTS.matchIndex.bonus : CONSTANTS.matchIndex.five;
+      case CONSTANTS.matchCount.six:
+        return CONSTANTS.matchIndex.six;
       default:
-        return -1;
+        return CONSTANTS.matchIndex.default;
     }
   }
 
@@ -33,13 +36,13 @@ class Lotto {
   }
 
   #validate(numbers) {
-    if (numbers.length !== 6) {
-      throw new Error('[ERROR] 로또 번호는 6개여야 합니다.');
+    if (numbers.length !== CONSTANTS.lotto.length) {
+      throw new Error(ERROR.lotto.length);
     }
 
     numbers.forEach(number => {
-      if (number < 1 || number > 45)
-        throw new Error('[ERROR] 로또 번호는 1~45의 숫자 범위를 가집니다.');
+      if (number < CONSTANTS.lotto.min || number > CONSTANTS.lotto.max)
+        throw new Error(ERROR.lotto.range);
     });
   }
 }

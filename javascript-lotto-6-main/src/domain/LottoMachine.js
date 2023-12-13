@@ -1,6 +1,7 @@
 import { Random } from '@woowacourse/mission-utils';
 import Lotto from './Lotto.js';
 import Profit from './Profit.js';
+import CONSTANTS from '../constants/constants.js';
 
 class LottoMachine {
   #lottos;
@@ -19,11 +20,11 @@ class LottoMachine {
   }
 
   matchResult(winningNumbers, bonusNumber) {
-    const matchCount = [0, 0, 0, 0, 0, 0];
+    const matchCount = CONSTANTS.matchResult;
 
     this.#lottos.forEach(lotto => {
       const index = lotto.checkLotto(winningNumbers, bonusNumber);
-      matchCount[index + 1] += 1;
+      matchCount[index + CONSTANTS.index.next] += 1;
     });
 
     return (this.#matchResult = matchCount);
@@ -34,7 +35,11 @@ class LottoMachine {
   }
 
   #generateLottoNumber() {
-    const randomNumbers = Random.pickUniqueNumbersInRange(1, 45, 6);
+    const randomNumbers = Random.pickUniqueNumbersInRange(
+      CONSTANTS.lotto.min,
+      CONSTANTS.lotto.max,
+      CONSTANTS.lotto.length,
+    );
     return this.#sortNumbers(randomNumbers);
   }
 

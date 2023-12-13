@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import MESSAGE from '../constants/message.js';
 
 const OutputView = {
   printString() {
@@ -6,7 +7,7 @@ const OutputView = {
   },
 
   printResultHeader() {
-    Console.print('\n당첨 통계\n---');
+    Console.print(MESSAGE.print.resultHeader);
   },
 
   printNumberOfPurchase(numberOfPurchase) {
@@ -18,11 +19,11 @@ const OutputView = {
   },
 
   printResult(matchResult) {
-    Console.print(`3개 일치 (5,000원) - ${matchResult[1]}개`);
-    Console.print(`4개 일치 (50,000원) - ${matchResult[2]}개`);
-    Console.print(`5개 일치 (1,500,000원) - ${matchResult[3]}개`);
-    Console.print(`5개 일치, 보너스 볼 일치 (30,000,000원) - ${matchResult[4]}개`);
-    Console.print(`6개 일치 (2,000,000,000원) - ${matchResult[5]}개`);
+    Console.print(`${MESSAGE.match.three}${matchResult[1]}개`);
+    Console.print(`${MESSAGE.match.four}${matchResult[2]}개`);
+    Console.print(`${MESSAGE.match.five}${matchResult[3]}개`);
+    Console.print(`${MESSAGE.match.bonus}${matchResult[4]}개`);
+    Console.print(`${MESSAGE.match.six}${matchResult[5]}개`);
   },
 
   printProfit(profit) {

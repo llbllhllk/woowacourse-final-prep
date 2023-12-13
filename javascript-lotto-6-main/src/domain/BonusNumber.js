@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class BonusNumber {
   #formattedBonusNumber;
 
@@ -12,8 +15,8 @@ class BonusNumber {
 
   #validate(bonusNumber) {
     if (Number.isNaN(bonusNumber)) throw new Error('[ERROR] 숫자가 아닌 다른 값을 입력하셨습니다.');
-    if (bonusNumber < 1 || bonusNumber > 45)
-      throw new Error('[ERROR] 1~45의 정수값을 가져야합니다.');
+    if (bonusNumber < CONSTANTS.lotto.min || bonusNumber > CONSTANTS.lotto.max)
+      throw new Error(ERROR.bonusNumber.range);
   }
 
   #formatBonusNumber(bonusNumber) {

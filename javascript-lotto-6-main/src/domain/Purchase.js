@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class Purchase {
   #formattedPurchase;
 
@@ -15,7 +18,8 @@ class Purchase {
   }
 
   #validate(purchase) {
-    if (purchase % 1000 !== 0) throw new Error('[ERROR] 구입금액은 1,000 단위여야합니다.');
+    if (purchase % CONSTANTS.purchase.unit !== CONSTANTS.number.zero)
+      throw new Error(ERROR.purchase.unit);
   }
 
   #formatPurchase(purchase) {
