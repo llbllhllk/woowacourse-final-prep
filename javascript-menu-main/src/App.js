@@ -1,4 +1,5 @@
 import LunchMenuController from './controller/LunchMenuController.js';
+import LunchMenuService from './service/LunchMenuService.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 
@@ -6,8 +7,8 @@ class App {
   #lunchMenuController;
 
   constructor() {
-    // const Service = new Service();
-    this.#lunchMenuController = new LunchMenuController(InputView, OutputView);
+    const lunchMenuService = new LunchMenuService();
+    this.#lunchMenuController = new LunchMenuController(lunchMenuService, InputView, OutputView);
   }
 
   async play() {

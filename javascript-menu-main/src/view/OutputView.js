@@ -32,6 +32,7 @@ const OutputView = {
     this.printWeekString();
     this.printCategoryString(categories);
     this.printRecommandMenus(recommandMenus);
+    this.printEndString();
   },
 };
 
