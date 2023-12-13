@@ -44,8 +44,9 @@ class LunchMenuController {
   }
 
   #printResult() {
+    this.#lunchMenuService.setCategories();
     const categories = this.#lunchMenuService.randomCategories();
-    const recommandMenus = this.#lunchMenuService.getRecommandMenus(categories);
+    const recommandMenus = this.#lunchMenuService.recommandMenus(categories);
     this.#outputView.printResultString(categories, recommandMenus);
   }
 }
