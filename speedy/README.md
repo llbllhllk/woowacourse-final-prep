@@ -202,7 +202,7 @@ class Input {
     this.#formattedInput = this.#format(input);
   }
 
-  getFormattedCoachNames() {
+  getFormattedInput() {
     return this.#formattedInput;
   }
 
