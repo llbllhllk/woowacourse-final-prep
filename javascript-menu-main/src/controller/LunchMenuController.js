@@ -45,9 +45,8 @@ class LunchMenuController {
   }
 
   #printResult() {
-    this.#outputView.printResultString();
-    const randomCateogry = this.#getRandomCategories();
-    console.log(randomCateogry);
+    const categories = this.#getRandomCategories();
+    this.#outputView.printResultString(categories);
   }
 
   #getRandomCategories() {
