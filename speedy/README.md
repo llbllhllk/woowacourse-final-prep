@@ -20,7 +20,7 @@
 
 <br />
 
-## ✅ 패키지 설치 전 node version 확인
+## 👀 패키지 설치 전 node version 확인
 
 ```bash
 node -v  // 버전 확인
@@ -316,4 +316,52 @@ const print = Object.freeze({});
 const MESSAGE = Object.freeze({});
 
 export default MESSAGE;
+```
+
+<br />
+
+## ✅ Test
+
+### 도메인 로직 테스트
+
+```javascript
+describe('~ 클래스 테스트', () => {
+  describe('~메서드는 ~를 입력받아 ~를 반환한다.', () => {
+    const cases = [
+      { numbers: [1, 2, 3], computerNumbers: [2, 3, 1], expected: 0 },
+      { numbers: [1, 2, 3], computerNumbers: [2, 3, 1], expected: 0 },
+    ];
+
+    test.each(cases)(
+      '$~가 주어지는 경우, ~()는 ~인 $expected를 반환한다.',
+      ({ numbers, computerNumbers, expected }) => {
+        // when
+        const result = new Class(numbers, computerNumbers).calculateStrikeCount();
+
+        // then
+        expect(result).toEqual(expected);
+      },
+    );
+  });
+});
+```
+
+### ✨ mockRandoms
+
+```javascript
+import { Random } from '@woowacourse/mission-utils';
+
+const mockRandoms = numbers => {
+  Random.pickUniqueNumbersInRange = jest.fn();
+  numbers.map(number => Random.pickUniqueNumbersInRange.mockReturnValueOnce(number));
+};
+
+// given(or cases)
+const numbers = [
+  [1, 2, 3],
+  [1, 2, 3],
+  [1, 2, 3],
+];
+
+mockRandoms(numbers);
 ```
