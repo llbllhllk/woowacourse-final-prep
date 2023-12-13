@@ -18,7 +18,6 @@ class LunchMenuController {
 
   start() {
     this.#outputView.printStartString();
-    this.#outputView.printWeekString();
 
     return this.#inputCoachName();
   }
@@ -39,7 +38,13 @@ class LunchMenuController {
         const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
         const formattedUnwantedMenu = new UnwantedMenu(unwantedMenu).getFormattedUnwantedMenu();
       }, Promise.resolve());
+
+      return this.#printResult();
     });
+  }
+
+  #printResult() {
+    this.#outputView.printResultString();
   }
 }
 
