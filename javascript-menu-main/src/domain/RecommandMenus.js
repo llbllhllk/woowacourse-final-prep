@@ -1,5 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
 import MENU from '../constants/menu.js';
+import CATEGORY from '../constants/category.js';
 
 class RecommandMenus {
   #coachName;
@@ -20,7 +21,7 @@ class RecommandMenus {
 
   #generateRecommandMenusForCoach(name, unwantedMenus, categories) {
     const recommendedMenus = [];
-    while (recommendedMenus.length < 5) {
+    while (recommendedMenus.length < CATEGORY.length) {
       let randomMenu;
       categories.forEach(category => {
         randomMenu = this.#generateRecommandMenu(category);
@@ -33,9 +34,9 @@ class RecommandMenus {
   }
 
   #generateRecommandMenu(category) {
-    const numbers = Array.from({ length: 9 }, (_, index) => index + 1);
-    const categoryMenu = MENU.list[category].split(', ');
-    const randomIndex = Random.shuffle(numbers)[0] - 1;
+    const numbers = Array.from({ length: MENU.length }, (_, index) => index + 1);
+    const categoryMenu = MENU.list[category].split(MENU.separator);
+    const randomIndex = Random.shuffle(numbers)[MENU.first] - 1;
     return categoryMenu[randomIndex];
   }
 

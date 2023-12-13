@@ -8,6 +8,9 @@ const list = Object.freeze({
 
 const MENU = Object.freeze({
   list,
+  length: 9,
+  separator: ', ',
+  first: 0,
 });
 
 export default MENU;

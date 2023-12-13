@@ -1,17 +1,18 @@
 import { Random } from '@woowacourse/mission-utils';
+import CATEGORY from '../constants/category.js';
 
 class Categories {
   randomCategories() {
-    const categories = ['일식', '한식', '중식', '아시안', '양식'];
+    const categories = CATEGORY.list;
     const randomCategories = [];
-    while (randomCategories.length < 5) {
+    while (randomCategories.length < CATEGORY.length) {
       this.#generateRandomCategory(randomCategories, categories);
     }
     return randomCategories;
   }
 
   #generateRandomCategory(randomCategories, categories) {
-    const randomIndex = Random.pickNumberInRange(1, 5);
+    const randomIndex = Random.pickNumberInRange(CATEGORY.index.from, CATEGORY.index.to);
     const randomCategory = categories[randomIndex - 1];
     this.#checkRangeDuplicated(randomCategories, randomCategory);
   }
@@ -24,7 +25,7 @@ class Categories {
   }
 
   #checkCategoryCount(categoryCount) {
-    return categoryCount < 2;
+    return categoryCount < CATEGORY.range;
   }
 }
 
