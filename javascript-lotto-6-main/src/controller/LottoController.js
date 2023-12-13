@@ -34,7 +34,7 @@ class LottoController {
   }
 
   #printLottos() {
-    this.#lottoService.setLottos();
+    this.#lottoService.setLottoMachine();
     const lottosString = this.#lottoService.lottosString();
     this.#outputView.printLottosString(lottosString);
 

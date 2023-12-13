@@ -1,13 +1,17 @@
 class Purchase {
-  #formattedInput;
+  #formattedPurchase;
 
   constructor(purchase) {
     this.#validate(this.#formatPurchase(purchase));
-    this.#formattedInput = this.#formatPurchase(purchase);
+    this.#formattedPurchase = this.#formatPurchase(purchase);
   }
 
   getFormattedAmount() {
-    return this.#formattedInput;
+    return this.#formattedPurchase;
+  }
+
+  numberOfPurchase() {
+    return this.#formattedPurchase / 1000;
   }
 
   #validate(purchase) {
