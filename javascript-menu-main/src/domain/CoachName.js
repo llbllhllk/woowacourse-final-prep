@@ -6,7 +6,7 @@ class CoachName {
     this.#formattedCoachName = this.#formatCoachName(coachName);
   }
 
-  getFormattedInput() {
+  getFormattedCoachName() {
     return this.#formattedCoachName;
   }
 

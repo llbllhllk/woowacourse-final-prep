@@ -1,4 +1,6 @@
 import CoachName from '../domain/CoachName.js';
+import UnwantedMenu from '../domain/UnwantedMenu.js';
+import reTry from '../utils/reTry.js';
 
 class LunchMenuController {
   // #service;
@@ -19,18 +21,22 @@ class LunchMenuController {
   }
 
   async #inputCoachName() {
-    const coachName = await this.#inputView.readCoachName();
-    const formattedCoachName = new CoachName(coachName);
-    console.log(formattedCoachName);
-    
-    return this.#inputUnwantedMenu(coachName);
+    return reTry(async () => {
+      const coachName = await this.#inputView.readCoachName();
+      const formattedCoachName = new CoachName(coachName).getFormattedCoachName();
+
+      return this.#inputUnwantedMenu(formattedCoachName);
+    });
   }
 
-  async #inputUnwantedMenu(coachName) {
-    await coachName.reduce(async (promise, name) => {
-      await promise;
-      const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
-    }, Promise.resolve());
+  async #inputUnwantedMenu(formattedCoachName) {
+    return reTry(async () => {
+      await formattedCoachName.reduce(async (promise, name) => {
+        await promise;
+        const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
+        const formattedUnwantedMenu = new UnwantedMenu(unwantedMenu).getFormattedUnwantedMenu();
+      }, Promise.resolve());
+    });
   }
 }
 
