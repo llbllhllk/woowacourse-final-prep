@@ -40,6 +40,7 @@ class LottoMachine {
       CONSTANTS.lotto.max,
       CONSTANTS.lotto.length,
     );
+
     return this.#sortNumbers(randomNumbers);
   }
 

@@ -5,6 +5,7 @@ const bonusNumber = Object.freeze({
 const lotto = Object.freeze({
   length: '[ERROR] 로또 번호는 6개여야 합니다.',
   range: '[ERROR] 로또 번호는 1~45의 숫자 범위를 가집니다.',
+  duplicated: '[ERROR] 로또 번호가 중복되었습니다.',
 });
 
 const purchase = Object.freeze({

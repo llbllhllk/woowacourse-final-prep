@@ -16,7 +16,10 @@ class Lotto {
   checkLotto(winningNumbers, bonusNumber) {
     const matchCount = this.#countMatchingNumbers(winningNumbers);
     const bonusMatch = this.#numbers.includes(bonusNumber);
+    return this.#matchIndex(matchCount, bonusMatch);
+  }
 
+  #matchIndex(matchCount, bonusMatch) {
     switch (matchCount) {
       case CONSTANTS.matchCount.three:
         return CONSTANTS.matchIndex.three;
@@ -39,6 +42,8 @@ class Lotto {
     if (numbers.length !== CONSTANTS.lotto.length) {
       throw new Error(ERROR.lotto.length);
     }
+
+    if (numbers.length !== new Set(numbers).size) throw new Error(ERROR.lotto.duplicated);
 
     numbers.forEach(number => {
       if (number < CONSTANTS.lotto.min || number > CONSTANTS.lotto.max)
