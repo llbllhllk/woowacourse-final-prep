@@ -2,6 +2,7 @@ import { Random } from '@woowacourse/mission-utils';
 import CoachName from '../domain/CoachName.js';
 import UnwantedMenu from '../domain/UnwantedMenu.js';
 import reTry from '../utils/reTry.js';
+import MENU from '../constants/menu.js';
 
 class LunchMenuController {
   // #service;
@@ -34,19 +35,49 @@ class LunchMenuController {
 
   async #inputUnwantedMenu(formattedCoachName) {
     return reTry(async () => {
+      const formattedUnwantedMenu = [];
       await formattedCoachName.reduce(async (promise, name) => {
         await promise;
         const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
-        const formattedUnwantedMenu = new UnwantedMenu(unwantedMenu).getFormattedUnwantedMenu();
+        formattedUnwantedMenu.push(new UnwantedMenu(unwantedMenu).getFormattedUnwantedMenu());
       }, Promise.resolve());
 
-      return this.#printResult();
+      return this.#printResult(formattedCoachName, formattedUnwantedMenu);
     });
   }
 
-  #printResult() {
+  #printResult(formattedCoachName, formattedUnwantedMenu) {
     const categories = this.#getRandomCategories();
-    this.#outputView.printResultString(categories);
+    const resultArray = formattedCoachName.map((name, index) => {
+      const unwantedMenus = formattedUnwantedMenu[index];
+      return [name, unwantedMenus];
+    });
+    const recommandMenus = this.#getRecommandMenus(resultArray, categories);
+
+    this.#outputView.printResultString(categories, recommandMenus);
+  }
+
+  #getRecommandMenus(inputArray, categories) {
+    return inputArray.map(([name, unwantedMenus]) => {
+      const recommendedMenus = [];
+      while (recommendedMenus.length < 5) {
+        let randomMenu;
+
+        // 각 카테고리에 대해 랜덤한 메뉴를 선택
+        categories.forEach(category => {
+          const numbers = Array.from({ length: 9 }, (_, index) => index + 1);
+          const categoryMenu = MENU.list[category].split(', ');
+          const randomIndex = Random.shuffle(numbers)[0] - 1;
+          randomMenu = categoryMenu[randomIndex];
+
+          // 중복 체크와 원치 않는 메뉴 체크
+          if (!recommendedMenus.includes(randomMenu) && !unwantedMenus.includes(randomMenu)) {
+            recommendedMenus.push(randomMenu);
+          }
+        });
+      }
+      return [name, recommendedMenus];
+    });
   }
 
   #getRandomCategories() {
