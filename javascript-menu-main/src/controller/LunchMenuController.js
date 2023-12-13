@@ -1,3 +1,4 @@
+import { Random } from '@woowacourse/mission-utils';
 import CoachName from '../domain/CoachName.js';
 import UnwantedMenu from '../domain/UnwantedMenu.js';
 import reTry from '../utils/reTry.js';
@@ -45,6 +46,22 @@ class LunchMenuController {
 
   #printResult() {
     this.#outputView.printResultString();
+    const randomCateogry = this.#getRandomCategories();
+    console.log(randomCateogry);
+  }
+
+  #getRandomCategories() {
+    const categories = ['일식', '한식', '중식', '아시안', '양식'];
+    const randomCategories = [];
+    while (randomCategories.length < 5) {
+      const randomIndex = Random.pickNumberInRange(1, 5);
+      const randomCategory = categories[randomIndex - 1];
+      const categoryCount = randomCategories.filter(category => category === randomCategory).length;
+      if (categoryCount < 2) {
+        randomCategories.push(randomCategory);
+      }
+    }
+    return randomCategories;
   }
 }
 
