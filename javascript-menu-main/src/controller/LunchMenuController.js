@@ -18,6 +18,7 @@ class LunchMenuController {
 
   start() {
     this.#outputView.printStartString();
+    this.#outputView.printWeekString();
 
     return this.#inputCoachName();
   }
