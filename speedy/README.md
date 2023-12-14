@@ -117,6 +117,8 @@ export default reTry;
 ### Controller.js
 
 ```javascript
+import reTry from '../utils/reTry.js';
+
 class Controller {
   // #service;
 
@@ -288,6 +290,24 @@ static #validateSeparator(winningNumbers) {
 }
 ```
 
+<br />
+
+## 🛠️ Service
+
+```javascript
+class Service {
+  // #inputs
+
+  constructor() {}
+
+  // setInputs()
+}
+
+export default Service;
+```
+
+<br />
+
 ## ⛳️ Constants
 
 ### constants.js
@@ -327,9 +347,7 @@ export default MESSAGE;
 ```javascript
 describe('~ 클래스 테스트', () => {
   describe('~메서드는 ~를 입력받아 ~를 반환한다.', () => {
-    const cases = [
-      { numbers: [1, 2, 3], computerNumbers: [2, 3, 1], expected: 0 },
-    ];
+    const cases = [{ numbers: [1, 2, 3], computerNumbers: [2, 3, 1], expected: 0 }];
 
     test.each(cases)(
       '$~가 주어지는 경우, ~()는 ~인 $expected를 반환한다.',
