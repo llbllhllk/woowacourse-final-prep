@@ -58,10 +58,17 @@ class EventController {
     this.#eventService.setDDayDiscount();
     const ddayDiscountString = this.#eventService.ddayDiscountString();
 
-    const weekDayDiscount = this.#eventService.weekDayDiscount();
-    
-    this.#outputView.printBenefitLogString(ddayDiscountString);
+    this.#eventService.setWeekDayDiscount();
+    const weekDayDiscountString = this.#eventService.weekDayDiscountString();
 
+    this.#eventService.setWeekendDiscount();
+    const weekendDiscountString = this.#eventService.weekendDiscountString();
+
+    this.#outputView.printBenefitLogString(
+      ddayDiscountString,
+      weekDayDiscountString,
+      weekendDiscountString,
+    );
   }
 }
 
