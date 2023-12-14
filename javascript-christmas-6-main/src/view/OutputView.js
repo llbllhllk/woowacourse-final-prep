@@ -26,6 +26,15 @@ const OutputView = {
   printGiftMenuString(giftMenu) {
     Console.print(`\n<증정 메뉴>\n${giftMenu}`);
   },
+
+  printBenefitLogString(ddayDiscountString) {
+    Console.print('\n<혜택 내역>');
+    this.printDDayDiscount(ddayDiscountString);
+  },
+
+  printDDayDiscount(ddayDiscountString) {
+    if (ddayDiscountString !== undefined) Console.print(ddayDiscountString);
+  },
 };
 
 export default OutputView;

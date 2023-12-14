@@ -1,11 +1,14 @@
 import MENU from '../constants/menu.js';
 import Order from '../domain/Order.js';
 import VisitDate from '../domain/VisitDate.js';
+import formatCurrency from '../utils/formatCurrency.js';
 
 class EventService {
   #visitDate;
 
   #order;
+
+  #ddayDiscount;
 
   constructor() {}
 
@@ -39,11 +42,16 @@ class EventService {
   }
 
   // Benefit
-  ddayDiscount() {
+  setDDayDiscount() {
     if (this.#visitDate >= 1 && this.#visitDate <= 25) {
-      return 1000 + (this.#visitDate - 1) * 100;
+      this.#ddayDiscount = 1000 + (this.#visitDate - 1) * 100;
+      return this.#ddayDiscount;
     }
-    return false;
+  }
+
+  ddayDiscountString() {
+    if (this.#ddayDiscount !== undefined)
+      return `크리스마스 디데이 할인: -${formatCurrency(this.#ddayDiscount)}원`;
   }
 }
 

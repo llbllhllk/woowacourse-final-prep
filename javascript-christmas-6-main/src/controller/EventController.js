@@ -55,8 +55,10 @@ class EventController {
   }
 
   #printBenfitLog() {
-    const ddayDiscount = this.#eventService.ddayDiscount();
-    console.log(ddayDiscount);
+    this.#eventService.setDDayDiscount();
+    const ddayDiscountString = this.#eventService.ddayDiscountString();
+
+    this.#outputView.printBenefitLogString(ddayDiscountString);
   }
 }
 
