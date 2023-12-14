@@ -120,15 +120,15 @@ export default reTry;
 import reTry from '../utils/reTry.js';
 
 class Controller {
-  // #service;
+  // #Service;
 
   #inputView;
 
   #outputView;
 
   constructor(inputView, outputView) {
-    // param: service
-    // this.#service = service;
+    // param: Service
+    // this.#Service = Service;
     this.#inputView = inputView;
     this.#outputView = outputView;
   }
@@ -305,6 +305,8 @@ class Service {
 
 export default Service;
 ```
+
+- 사용자 입력에 해당하는 부분만 service에서 set함수를 만든다.
 
 <br />
 
