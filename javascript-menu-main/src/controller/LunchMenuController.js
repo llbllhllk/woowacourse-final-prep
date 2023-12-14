@@ -1,4 +1,5 @@
 import CoachName from '../domain/CoachName.js';
+import UnwantedMenu from '../domain/UnwantedMenu.js';
 import reTry from '../utils/reTry.js';
 
 class LunchMenuController {
@@ -30,6 +31,7 @@ class LunchMenuController {
   async #inputUnwantedMenu() {
     return reTry(async () => {
       const unwantedMenu = await this.#inputView.readUnwantedMenu();
+      const formattedUnwantedMenu = new UnwantedMenu(unwantedMenu);
 
       return this.#inputUnwantedMenu();
     });
