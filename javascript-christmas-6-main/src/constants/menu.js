@@ -1,7 +1,7 @@
 const list = {
   에피타이저: [
     { name: '양송이수프', prize: 6000 },
-    { name: '타파스', prize: 5000 },
+    { name: '타파스', prize: 5500 },
     { name: '시저샐러드', prize: 8000 },
   ],
   메인: [

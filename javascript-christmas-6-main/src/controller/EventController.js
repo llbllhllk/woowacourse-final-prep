@@ -38,6 +38,12 @@ class EventController {
     this.#outputView.printPreviewHeaderString();
     const orderString = this.#eventService.orderString();
     this.#outputView.printOrderString(orderString);
+    return this.#printBeforeDiscountAmount();
+  }
+
+  #printBeforeDiscountAmount() {
+    const beforeDiscountAmount = this.#eventService.beforeDiscountAmount();
+    console.log(beforeDiscountAmount);
   }
 }
 
