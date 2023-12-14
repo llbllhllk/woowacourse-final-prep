@@ -13,7 +13,16 @@ class EventController {
     this.#outputView = outputView;
   }
 
-  start() {}
+  start() {
+    return this.#inputVisitDate();
+  }
+
+  async #inputVisitDate() {
+    return reTry(async () => {
+      const visitDate = await this.#inputView.readVisitDate();
+      console.log(visitDate);
+    });
+  }
 }
 
 export default EventController;
