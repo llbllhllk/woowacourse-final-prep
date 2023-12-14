@@ -120,15 +120,14 @@ export default reTry;
 import reTry from '../utils/reTry.js';
 
 class Controller {
-  // #Service;
+  #Service;
 
   #inputView;
 
   #outputView;
 
-  constructor(inputView, outputView) {
-    // param: Service
-    // this.#Service = Service;
+  constructor(Service, inputView, outputView) {
+    this.#Service = Service;
     this.#inputView = inputView;
     this.#outputView = outputView;
   }
@@ -177,8 +176,8 @@ class App {
   #Controller;
 
   constructor() {
-    // const Service = new Service();
-    this.#Controller = new Controller(InputView, OutputView);
+    const Service = new Service();
+    this.#Controller = new Controller(Service, InputView, OutputView);
   }
 
   async play() {
@@ -200,8 +199,8 @@ class Input {
   #formattedInput;
 
   constructor(input) {
-    this.#validate(this.#format(input));
-    this.#formattedInput = this.#format(input);
+    this.#validate(this.#formatInput(input));
+    this.#formattedInput = this.#formatInput(input);
   }
 
   getFormattedInput() {
@@ -335,7 +334,7 @@ const read = Object.freeze({});
 
 const print = Object.freeze({});
 
-const MESSAGE = Object.freeze({});
+const MESSAGE = Object.freeze({ read, print });
 
 export default MESSAGE;
 ```

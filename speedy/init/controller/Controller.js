@@ -1,15 +1,14 @@
 import reTry from '../utils/reTry.js';
 
 class Controller {
-  // #Service;
+  #Service;
 
   #inputView;
 
   #outputView;
 
-  constructor(inputView, outputView) {
-    // param: Service
-    // this.#service = Service;
+  constructor(Service, inputView, outputView) {
+    this.#Service = Service;
     this.#inputView = inputView;
     this.#outputView = outputView;
   }

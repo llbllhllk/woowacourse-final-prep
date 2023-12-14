@@ -2,8 +2,8 @@ class Input {
   #formattedInput;
 
   constructor(input) {
-    this.#validate(this.#format(input));
-    this.#formattedInput = this.#format(input);
+    this.#validate(this.#formatInput(input));
+    this.#formattedInput = this.#formatInput(input);
   }
 
   getFormattedInput() {
