@@ -65,13 +65,12 @@ import { Console } from '@woowacourse/mission-utils';
 
 const InputView = {
   async read() {
-    const returnValue = await Console.readLineAsync();
-
-    return returnValue;
+    return await Console.readLineAsync();
   },
 };
 
 export default InputView;
+
 ```
 
 ### OutputView.js
