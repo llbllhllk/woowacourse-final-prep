@@ -183,6 +183,14 @@ class EventService {
         this.#specialDayDiscount);
     return `${formatCurrency(this.#expectDiscount)}원`;
   }
+
+  // 이벤트 배지
+  eventBadge() {
+    if (this.#totalDiscount <= -20000) return '산타';
+    if (this.#totalDiscount <= -10000) return '트리';
+    if (this.#totalDiscount <= -5000) return '별';
+    return '없음';
+  }
 }
 
 export default EventService;

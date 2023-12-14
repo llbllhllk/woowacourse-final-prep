@@ -95,6 +95,12 @@ class EventController {
   #printExpectDiscount() {
     const expectDiscountString = this.#eventService.expectDiscountString();
     this.#outputView.printExpectDiscountString(expectDiscountString);
+    return this.#printEventBadge();
+  }
+
+  #printEventBadge() {
+    const eventBadge = this.#eventService.eventBadge();
+    this.#outputView.printEventBadgeString(eventBadge);
   }
 }
 
