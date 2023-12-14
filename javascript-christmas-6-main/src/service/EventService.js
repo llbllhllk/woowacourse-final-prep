@@ -16,12 +16,14 @@ class EventService {
   #weekDayDiscount;
   #weekendDiscount;
   #specialDayDiscount;
+  #giftMenuDiscount;
 
   constructor() {
     this.#ddayDiscount = 0;
     this.#weekDayDiscount = 0;
     this.#weekendDiscount = 0;
     this.#specialDayDiscount = 0;
+    this.#giftMenuDiscount = 0;
   }
 
   setVisitDate(visitDate) {
@@ -59,7 +61,7 @@ class EventService {
 
   // Benefit
 
-  // DDay
+  // 크리스마스 디데이 할인
   setDDayDiscount() {
     if (this.#visitDate >= 1 && this.#visitDate <= 25) {
       this.#ddayDiscount -= 1000 + (this.#visitDate - 1) * 100;
@@ -73,7 +75,7 @@ class EventService {
     return false;
   }
 
-  // Weekday
+  // 평일 할인
   setWeekDayDiscount() {
     const MONTH = 12;
     const YEAR = 2023;
@@ -95,7 +97,7 @@ class EventService {
     return false;
   }
 
-  // Weekend
+  // 주말 할인
   setWeekendDiscount() {
     const MONTH = 12;
     const YEAR = 2023;
@@ -117,18 +119,29 @@ class EventService {
     return false;
   }
 
+  // 특별 할인
   setSpecialDayDiscount() {
     const MONTH = 12;
     const YEAR = 2023;
     const inputDate = new Date(YEAR, MONTH - 1, this.#visitDate);
     const dayOfWeek = inputDate.getDay();
-    if (this.#visitDate === 25 || dayOfWeek === 0)
-      this.#specialDayDiscount = this.#beforeDiscountAmount - 1000;
+    if (this.#visitDate === 25 || dayOfWeek === 0) this.#specialDayDiscount -= 1000;
   }
 
-  specialDayDiscount() {
+  specialDayDiscountString() {
     if (this.#specialDayDiscount !== 0)
       return `특별 할인: ${formatCurrency(this.#specialDayDiscount)}원`;
+    return false;
+  }
+
+  // 증정 이벤트
+  setGiftMenuDiscount() {
+    if (this.#beforeDiscountAmount > 120000) this.#giftMenuDiscount -= 25000;
+  }
+
+  giftMenuDiscountString() {
+    if (this.#giftMenuDiscount !== 0)
+      return `증정 이벤트: ${formatCurrency(this.#giftMenuDiscount)}원`;
     return false;
   }
 }

@@ -66,13 +66,17 @@ class EventController {
     const weekendDiscountString = this.#eventService.weekendDiscountString();
 
     this.#eventService.setSpecialDayDiscount();
-    const specialDayDiscountString = this.#eventService.specialDayDiscount();
+    const specialDayDiscountString = this.#eventService.specialDayDiscountString();
+
+    this.#eventService.setGiftMenuDiscount();
+    const giftMenuDiscountString = this.#eventService.giftMenuDiscountString();
 
     this.#outputView.printBenefitLogString(
       ddayDiscountString,
       weekDayDiscountString,
       weekendDiscountString,
       specialDayDiscountString,
+      giftMenuDiscountString,
     );
   }
 }
