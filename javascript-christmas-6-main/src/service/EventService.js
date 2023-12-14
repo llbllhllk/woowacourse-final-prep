@@ -15,6 +15,13 @@ class EventService {
   setOrder(order) {
     this.#order = new Order(order).getFormattedOrder();
   }
+
+  // 주문 메뉴와 개수를 반환하는 기능
+  orderString() {
+    return this.#order.map(item => {
+      return `${item[0]} ${item[1]}개`;
+    });
+  }
 }
 
 export default EventService;

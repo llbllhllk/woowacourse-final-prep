@@ -36,6 +36,8 @@ class EventController {
 
   #printOrderMenu() {
     this.#outputView.printPreviewHeaderString();
+    const orderString = this.#eventService.orderString();
+    this.#outputView.printOrderString(orderString);
   }
 }
 
