@@ -37,6 +37,14 @@ class EventService {
     if (beforeDiscountAmount > 120000) return '샴페인 1개';
     return '없음';
   }
+
+  // Benefit
+  ddayDiscount() {
+    if (this.#visitDate >= 1 && this.#visitDate <= 25) {
+      return 1000 + (this.#visitDate - 1) * 100;
+    }
+    return false;
+  }
 }
 
 export default EventService;

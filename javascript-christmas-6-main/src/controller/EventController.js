@@ -51,6 +51,12 @@ class EventController {
   #printGiftMenu(beforeDiscountAmount) {
     const giftMenu = this.#eventService.giftMenu(beforeDiscountAmount);
     this.#outputView.printGiftMenuString(giftMenu);
+    return this.#printBenfitLog();
+  }
+
+  #printBenfitLog() {
+    const ddayDiscount = this.#eventService.ddayDiscount();
+    console.log(ddayDiscount);
   }
 }
 
