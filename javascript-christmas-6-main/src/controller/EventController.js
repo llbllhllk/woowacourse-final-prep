@@ -30,8 +30,12 @@ class EventController {
     return reTry(async () => {
       const order = await this.#inputView.readOrder();
       this.#eventService.setOrder(order);
-      console.log(order);
+      return this.#printOrderMenu();
     });
+  }
+
+  #printOrderMenu() {
+    this.#outputView.printPreviewHeaderString();
   }
 }
 
