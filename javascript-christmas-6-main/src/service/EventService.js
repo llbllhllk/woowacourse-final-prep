@@ -1,9 +1,12 @@
-class EventService {
-  // #inputs
+import VisitDate from '../domain/VisitDate.js';
 
+class EventService {
+  #visitDate;
   constructor() {}
 
-  // setInputs()
+  setVisitDate(visitDate) {
+    this.#visitDate = new VisitDate(visitDate);
+  }
 }
 
 export default EventService;
