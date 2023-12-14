@@ -22,10 +22,19 @@ const OutputView = {
     Console.print(`[ 카테고리 | ${categories.join(' | ')} ]`);
   },
 
-  printResultString(categories) {
+  printRecommandMenusString(recommandMenus) {
+    // [ 포코 | 된장찌개 | 불고기 | 하이라이스 | 탕수육 | 나시고렝 ]
+    recommandMenus.forEach(recommand =>
+      Console.print(`[ ${recommand[0]} | ${recommand[1].join(' | ')} ]`),
+    );
+  },
+
+  printResultString(recommandMenus, categories) {
     this.printResultHeaderString();
-    this.printWeekString()
+    this.printWeekString();
     this.printCategoriesString(categories);
+    this.printRecommandMenusString(recommandMenus);
+    this.printEndString()
   },
 };
 

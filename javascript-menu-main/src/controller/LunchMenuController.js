@@ -43,7 +43,8 @@ class LunchMenuController {
 
   #printResult() {
     const randomCategories = this.#lunchMenuService.categories();
-    this.#outputView.printResultString(randomCategories);
+    const recommandMenus = this.#lunchMenuService.recommandMenus(randomCategories);
+    this.#outputView.printResultString(recommandMenus, randomCategories);
   }
 }
 
