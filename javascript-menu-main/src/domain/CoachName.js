@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class CoachName {
   #formattedCoachName;
 
@@ -12,16 +15,16 @@ class CoachName {
 
   #validate(coachName) {
     coachName.forEach(name => {
-      if (name.length < 2 || name.length > 4)
-        throw new Error('[ERROR] 코치 이름은 최소 2글자, 최대 4글자여야합니다.');
+      if (name.length < CONSTANTS.coach.minCount || name.length > CONSTANTS.coach.maxCount)
+        throw new Error(ERROR.coachName.length);
     });
-    if (coachName.length < 2 || coachName.length > 5)
-      throw new Error('[ERROR] 최소 2명, 최대 5명의 코치가 있어야합니다.');
+    if (coachName.length < CONSTANTS.coach.minCount || coachName.length > CONSTANTS.coach.maxCount)
+      throw new Error(ERROR.coachName.range);
   }
 
   #formatCoachName(coachName) {
     return coachName
-      .split(',')
+      .split(CONSTANTS.string.separator)
       .map(element => element.trim())
       .filter(Boolean);
   }

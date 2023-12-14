@@ -9,9 +9,22 @@ const random = Object.freeze({
   to: 5,
 });
 
+const coach = Object.freeze({
+  nameMinLength: 2,
+  nameMaxLength: 4,
+  minCount: 2,
+  maxCount: 5,
+});
+
+const string = Object.freeze({
+  separator: ',',
+});
+
 const CONSTANTS = Object.freeze({
   categories,
+  coach,
   random,
+  string,
 });
 
 export default CONSTANTS;
