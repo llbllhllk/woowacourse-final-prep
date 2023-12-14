@@ -19,6 +19,9 @@ class EventService {
   #giftMenuDiscount;
 
   #totalDiscount;
+
+  #expectDiscount;
+
   constructor() {
     this.#ddayDiscount = 0;
     this.#weekDayDiscount = 0;
@@ -168,6 +171,17 @@ class EventService {
       this.#specialDayDiscount +
       this.#giftMenuDiscount;
     return `${formatCurrency(this.#totalDiscount)}원`;
+  }
+
+  // 할인 예상 금액
+  expectDiscountString() {
+    this.#expectDiscount =
+      this.#beforeDiscountAmount +
+      (this.#ddayDiscount +
+        this.#weekDayDiscount +
+        this.#weekendDiscount +
+        this.#specialDayDiscount);
+    return `${formatCurrency(this.#expectDiscount)}원`;
   }
 }
 

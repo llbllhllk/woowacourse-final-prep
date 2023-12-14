@@ -89,6 +89,12 @@ class EventController {
   #printTotalDiscount() {
     const totalDiscountString = this.#eventService.totalDiscountString();
     this.#outputView.printTotalDiscountString(totalDiscountString);
+    return this.#printExpectDiscount();
+  }
+
+  #printExpectDiscount() {
+    const expectDiscountString = this.#eventService.expectDiscountString();
+    this.#outputView.printExpectDiscountString(expectDiscountString);
   }
 }
 
