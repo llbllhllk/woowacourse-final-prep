@@ -1,6 +1,7 @@
 import MENU from '../constants/menu.js';
 import Order from '../domain/Order.js';
 import VisitDate from '../domain/VisitDate.js';
+import checkWeekdayOrWeekend from '../utils/checkWeekdayOrWeekend.js';
 import formatCurrency from '../utils/formatCurrency.js';
 
 class EventService {
@@ -8,9 +9,14 @@ class EventService {
 
   #order;
 
+  // benefit
   #ddayDiscount;
+  #weekDayDiscount;
 
-  constructor() {}
+  constructor() {
+    this.#ddayDiscount = 0;
+    this.#weekDayDiscount = 0;
+  }
 
   setVisitDate(visitDate) {
     this.#visitDate = new VisitDate(visitDate).getFormattedVisitDate();
@@ -44,14 +50,30 @@ class EventService {
   // Benefit
   setDDayDiscount() {
     if (this.#visitDate >= 1 && this.#visitDate <= 25) {
-      this.#ddayDiscount = 1000 + (this.#visitDate - 1) * 100;
+      this.#ddayDiscount -= 1000 + (this.#visitDate - 1) * 100;
       return this.#ddayDiscount;
     }
   }
 
   ddayDiscountString() {
     if (this.#ddayDiscount !== undefined)
-      return `크리스마스 디데이 할인: -${formatCurrency(this.#ddayDiscount)}원`;
+      return `크리스마스 디데이 할인: ${formatCurrency(this.#ddayDiscount)}원`;
+  }
+
+  weekDayDiscount() {
+    const MONTH = 12;
+    const YEAR = 2023;
+    if (checkWeekdayOrWeekend(YEAR, MONTH, this.#visitDate) === '평일') {
+      this.#order.forEach(([menuName, quantity]) => {
+        const dessertMenu = MENU.list['디저트'].find(menu => menu.name === menuName);
+        if (dessertMenu) {
+          const discountPerItem = 2023; // 1개당 할인 금액
+          const discountAmount = discountPerItem * quantity;
+          this.#weekDayDiscount -= discountAmount;
+        }
+      });
+    }
+    return this.#weekDayDiscount;
   }
 }
 
