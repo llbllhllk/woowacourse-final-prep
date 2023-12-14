@@ -21,7 +21,6 @@ class EventController {
     return reTry(async () => {
       const visitDate = await this.#inputView.readVisitDate();
       this.#eventService.setVisitDate(visitDate);
-
       return this.#inputOrder();
     });
   }
@@ -29,7 +28,7 @@ class EventController {
   async #inputOrder() {
     return reTry(async () => {
       const order = await this.#inputView.readOrder();
-
+      this.#eventService.setOrder(order);
       console.log(order);
     });
   }
