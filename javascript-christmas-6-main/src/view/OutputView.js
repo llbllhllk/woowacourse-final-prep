@@ -65,6 +65,11 @@ const OutputView = {
     this.printSpecialDayDiscountString(specialDayDiscountString);
     this.printGitftMenuDiscountString(giftMenuDiscountString);
   },
+
+  printTotalDiscountString(totalDiscountString) {
+    Console.print('\n<총혜택 금액>');
+    Console.print(totalDiscountString);
+  },
 };
 
 export default OutputView;
