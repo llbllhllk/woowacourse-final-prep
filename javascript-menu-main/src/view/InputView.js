@@ -1,16 +1,15 @@
 import { Console } from '@woowacourse/mission-utils';
+import MESSAGE from '../constants/message.js';
 
 const InputView = {
   async readCoachName() {
-    const coachName = await Console.readLineAsync('코치의 이름을 입력해 주세요. (, 로 구분)\n');
+    const coachName = await Console.readLineAsync(MESSAGE.read.coachName);
 
     return coachName;
   },
 
   async readUnwantedMenu(name) {
-    const unwantedMenu = await Console.readLineAsync(
-      `\n${name}(이)가 못 먹는 메뉴를 입력해 주세요.\n`,
-    );
+    const unwantedMenu = await Console.readLineAsync(`\n${name}${MESSAGE.read.unwantedMenu}`);
 
     return unwantedMenu;
   },
