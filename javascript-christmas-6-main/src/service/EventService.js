@@ -144,6 +144,18 @@ class EventService {
       return `증정 이벤트: ${formatCurrency(this.#giftMenuDiscount)}원`;
     return false;
   }
+
+  emptyBenefit() {
+    if (
+      this.#ddayDiscount &&
+      this.#weekDayDiscount &&
+      this.#weekendDiscount &&
+      this.#specialDayDiscount &&
+      this.#giftMenuDiscount === 0
+    )
+      return '없음';
+    return false;
+  }
 }
 
 export default EventService;

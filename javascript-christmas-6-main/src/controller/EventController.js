@@ -71,13 +71,18 @@ class EventController {
     this.#eventService.setGiftMenuDiscount();
     const giftMenuDiscountString = this.#eventService.giftMenuDiscountString();
 
-    this.#outputView.printBenefitLogString(
-      ddayDiscountString,
-      weekDayDiscountString,
-      weekendDiscountString,
-      specialDayDiscountString,
-      giftMenuDiscountString,
-    );
+    const emptyBenefitString = this.#eventService.emptyBenefit();
+    
+    if (!emptyBenefitString) {
+      return this.#outputView.printBenefitLogString(
+        ddayDiscountString,
+        weekDayDiscountString,
+        weekendDiscountString,
+        specialDayDiscountString,
+        giftMenuDiscountString,
+      );
+    }
+    return this.#outputView.printEmptyBenefitString(emptyBenefitString);
   }
 }
 
