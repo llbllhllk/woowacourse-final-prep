@@ -27,13 +27,23 @@ const OutputView = {
     Console.print(`\n<증정 메뉴>\n${giftMenu}`);
   },
 
-  printBenefitLogString(ddayDiscountString) {
-    Console.print('\n<혜택 내역>');
-    this.printDDayDiscount(ddayDiscountString);
+  printDDayDiscountString(ddayDiscountString) {
+    if (ddayDiscountString) Console.print(ddayDiscountString);
   },
 
-  printDDayDiscount(ddayDiscountString) {
-    if (ddayDiscountString !== undefined) Console.print(ddayDiscountString);
+  printWeekDayDiscountString(weekDayDiscountString) {
+    if (weekDayDiscountString) Console.print(weekDayDiscountString);
+  },
+
+  printWeekendDiscountString(weekendDiscountString) {
+    if (weekendDiscountString) Console.print(weekendDiscountString);
+  },
+
+  printBenefitLogString(ddayDiscountString, weekDayDiscountString, weekendDiscountString) {
+    Console.print('\n<혜택 내역>');
+    this.printDDayDiscountString(ddayDiscountString);
+    this.printWeekendDiscountString(weekDayDiscountString);
+    this.printWeekendDiscountString(weekendDiscountString);
   },
 };
 
