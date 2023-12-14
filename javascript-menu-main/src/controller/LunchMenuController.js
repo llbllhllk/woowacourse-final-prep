@@ -40,11 +40,11 @@ class LunchMenuController {
         formattedUnwantedMenu.push(new UnwantedMenu(unwantedMenu).getFormattedUnwantedMenu());
       }, Promise.resolve());
 
-      return this.#printCategories(formattedCoachName, formattedUnwantedMenu);
+      return this.#printResult(formattedCoachName, formattedUnwantedMenu);
     });
   }
 
-  #printCategories(formattedCoachName, formattedUnwantedMenu) {
+  #printResult(formattedCoachName, formattedUnwantedMenu) {
     const categories = ['일식', '한식', '중식', '아시안', '양식'];
     const randomCategories = [];
     while (randomCategories.length < 5) {
@@ -53,6 +53,7 @@ class LunchMenuController {
         randomCategories.push(randomCategory);
       }
     }
+    this.#outputView.printResultString(randomCategories);
   }
 }
 

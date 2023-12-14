@@ -6,7 +6,7 @@ const OutputView = {
   },
 
   printResultHeaderString() {
-    Console.print('메뉴 추천 결과입니다.');
+    Console.print('\n메뉴 추천 결과입니다.');
   },
 
   printWeekString() {
@@ -15,6 +15,17 @@ const OutputView = {
 
   printEndString() {
     Console.print('\n추천을 완료했습니다.');
+  },
+
+  printCategoriesString(categories) {
+    //[ 카테고리 | 한식 | 한식 | 일식 | 중식 | 아시안 ]
+    Console.print(`[ 카테고리 | ${categories.join(' | ')} ]`);
+  },
+
+  printResultString(categories) {
+    this.printResultHeaderString();
+    this.printWeekString()
+    this.printCategoriesString(categories);
   },
 };
 
