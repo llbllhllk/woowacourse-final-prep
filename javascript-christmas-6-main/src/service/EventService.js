@@ -18,12 +18,14 @@ class EventService {
   #specialDayDiscount;
   #giftMenuDiscount;
 
+  #totalDiscount;
   constructor() {
     this.#ddayDiscount = 0;
     this.#weekDayDiscount = 0;
     this.#weekendDiscount = 0;
     this.#specialDayDiscount = 0;
     this.#giftMenuDiscount = 0;
+    this.#totalDiscount = 0;
   }
 
   setVisitDate(visitDate) {
@@ -155,6 +157,17 @@ class EventService {
     )
       return '없음';
     return false;
+  }
+
+  // 총 혜택금액
+  totalDiscountString() {
+    this.#totalDiscount =
+      this.#ddayDiscount +
+      this.#weekDayDiscount +
+      this.#weekendDiscount +
+      this.#specialDayDiscount +
+      this.#giftMenuDiscount;
+    return `${formatCurrency(this.#totalDiscount)}원`;
   }
 }
 

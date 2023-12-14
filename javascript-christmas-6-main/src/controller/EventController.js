@@ -52,7 +52,8 @@ class EventController {
   #printGiftMenu() {
     const giftMenu = this.#eventService.giftMenu();
     this.#outputView.printGiftMenuString(giftMenu);
-    return this.#printBenfitLog();
+    this.#printBenfitLog();
+    return this.#printTotalDiscount();
   }
 
   #printBenfitLog() {
@@ -72,7 +73,7 @@ class EventController {
     const giftMenuDiscountString = this.#eventService.giftMenuDiscountString();
 
     const emptyBenefitString = this.#eventService.emptyBenefit();
-    
+
     if (!emptyBenefitString) {
       return this.#outputView.printBenefitLogString(
         ddayDiscountString,
@@ -83,6 +84,11 @@ class EventController {
       );
     }
     return this.#outputView.printEmptyBenefitString(emptyBenefitString);
+  }
+
+  #printTotalDiscount() {
+    const totalDiscountString = this.#eventService.totalDiscountString();
+    this.#outputView.printTotalDiscountString(totalDiscountString);
   }
 }
 
