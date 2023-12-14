@@ -50,7 +50,7 @@ class EventController {
 
   #printGiftMenu(beforeDiscountAmount) {
     const giftMenu = this.#eventService.giftMenu(beforeDiscountAmount);
-    console.log(giftMenu);
+    this.#outputView.printGiftMenuString(giftMenu);
   }
 }
 

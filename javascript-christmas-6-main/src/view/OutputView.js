@@ -22,6 +22,10 @@ const OutputView = {
     Console.print('\n<할인 전 총주문 금액>');
     Console.print(`${beforeDiscountAmount}원`);
   },
+
+  printGiftMenuString(giftMenu) {
+    Console.print(`\n<증정 메뉴>\n${giftMenu}`);
+  },
 };
 
 export default OutputView;
