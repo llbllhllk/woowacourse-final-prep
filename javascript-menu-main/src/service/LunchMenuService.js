@@ -1,7 +1,5 @@
-import { Random } from '@woowacourse/mission-utils';
 import CoachName from '../domain/CoachName.js';
 import UnwantedMenu from '../domain/UnwantedMenu.js';
-import MENU from '../constants/menu.js';
 import Categories from '../domain/Categories.js';
 import RecommandMenus from '../domain/RecommandMenus.js';
 

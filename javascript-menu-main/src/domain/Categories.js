@@ -1,25 +1,30 @@
 import { Random } from '@woowacourse/mission-utils';
+import CONSTANTS from '../constants/constants.js';
 
 class Categories {
   #categories;
 
   constructor() {
-    this.#categories = ['일식', '한식', '중식', '아시안', '양식'];
+    this.#categories = CONSTANTS.categories.list;
   }
 
   categories() {
     const randomCategories = [];
-    while (randomCategories.length < 5) {
+    while (randomCategories.length < CONSTANTS.categories.length) {
       const randomCategory = this.#generateRandomCategory();
-      if (randomCategories.filter(category => category === randomCategory).length < 2) {
+      if (
+        randomCategories.filter(category => category === randomCategory).length <
+        CONSTANTS.categories.maxRange
+      )
         randomCategories.push(randomCategory);
-      }
     }
     return randomCategories;
   }
 
   #generateRandomCategory() {
-    return this.#categories[Random.pickNumberInRange(1, 5) - 1];
+    return this.#categories[
+      Random.pickNumberInRange(CONSTANTS.random.from, CONSTANTS.random.to) - 1
+    ];
   }
 }
 

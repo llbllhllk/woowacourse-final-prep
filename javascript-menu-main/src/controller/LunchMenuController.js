@@ -15,7 +15,6 @@ class LunchMenuController {
 
   start() {
     this.#outputView.printStartString();
-
     return this.#inputCoachName();
   }
 
@@ -23,7 +22,6 @@ class LunchMenuController {
     return reTry(async () => {
       const coachName = await this.#inputView.readCoachName();
       this.#lunchMenuService.setCoachName(coachName);
-
       return this.#inputUnwantedMenu();
     });
   }
@@ -36,7 +34,6 @@ class LunchMenuController {
         const unwantedMenu = await this.#inputView.readUnwantedMenu(name);
         this.#lunchMenuService.setUnwantedMenu(unwantedMenu);
       }, Promise.resolve());
-
       return this.#printResult();
     });
   }
