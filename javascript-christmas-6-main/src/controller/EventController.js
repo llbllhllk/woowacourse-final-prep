@@ -43,13 +43,14 @@ class EventController {
   }
 
   #printBeforeDiscountAmount() {
+    this.#eventService.setBeforeDiscountAmount();
     const beforeDiscountAmount = this.#eventService.beforeDiscountAmount();
     this.#outputView.printbeforeDiscountAmountString(formatCurrency(beforeDiscountAmount));
-    return this.#printGiftMenu(beforeDiscountAmount);
+    return this.#printGiftMenu();
   }
 
-  #printGiftMenu(beforeDiscountAmount) {
-    const giftMenu = this.#eventService.giftMenu(beforeDiscountAmount);
+  #printGiftMenu() {
+    const giftMenu = this.#eventService.giftMenu();
     this.#outputView.printGiftMenuString(giftMenu);
     return this.#printBenfitLog();
   }
@@ -64,10 +65,14 @@ class EventController {
     this.#eventService.setWeekendDiscount();
     const weekendDiscountString = this.#eventService.weekendDiscountString();
 
+    this.#eventService.setSpecialDayDiscount();
+    const specialDayDiscountString = this.#eventService.specialDayDiscount();
+
     this.#outputView.printBenefitLogString(
       ddayDiscountString,
       weekDayDiscountString,
       weekendDiscountString,
+      specialDayDiscountString,
     );
   }
 }

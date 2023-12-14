@@ -9,15 +9,19 @@ class EventService {
 
   #order;
 
+  #beforeDiscountAmount;
+
   // benefit
   #ddayDiscount;
   #weekDayDiscount;
   #weekendDiscount;
+  #specialDayDiscount;
 
   constructor() {
     this.#ddayDiscount = 0;
     this.#weekDayDiscount = 0;
     this.#weekendDiscount = 0;
+    this.#specialDayDiscount = 0;
   }
 
   setVisitDate(visitDate) {
@@ -34,22 +38,28 @@ class EventService {
     });
   }
 
-  beforeDiscountAmount() {
+  setBeforeDiscountAmount() {
     const totalAmount = this.#order.reduce((acc, [menuName, quantity]) => {
       const menu = Object.values(MENU.list)
         .flat()
         .find(item => item.name === menuName);
       return acc + (menu ? menu.prize * quantity : 0);
     }, 0);
-    return totalAmount;
+    this.#beforeDiscountAmount = totalAmount;
   }
 
-  giftMenu(beforeDiscountAmount) {
-    if (beforeDiscountAmount > 120000) return '샴페인 1개';
+  beforeDiscountAmount() {
+    return this.#beforeDiscountAmount;
+  }
+
+  giftMenu() {
+    if (this.#beforeDiscountAmount > 120000) return '샴페인 1개';
     return '없음';
   }
 
   // Benefit
+
+  // DDay
   setDDayDiscount() {
     if (this.#visitDate >= 1 && this.#visitDate <= 25) {
       this.#ddayDiscount -= 1000 + (this.#visitDate - 1) * 100;
@@ -63,6 +73,7 @@ class EventService {
     return false;
   }
 
+  // Weekday
   setWeekDayDiscount() {
     const MONTH = 12;
     const YEAR = 2023;
@@ -84,6 +95,7 @@ class EventService {
     return false;
   }
 
+  // Weekend
   setWeekendDiscount() {
     const MONTH = 12;
     const YEAR = 2023;
@@ -102,6 +114,21 @@ class EventService {
 
   weekendDiscountString() {
     if (this.#weekendDiscount !== 0) return `주말 할인: ${formatCurrency(this.#weekendDiscount)}원`;
+    return false;
+  }
+
+  setSpecialDayDiscount() {
+    const MONTH = 12;
+    const YEAR = 2023;
+    const inputDate = new Date(YEAR, MONTH - 1, this.#visitDate);
+    const dayOfWeek = inputDate.getDay();
+    if (this.#visitDate === 25 || dayOfWeek === 0)
+      this.#specialDayDiscount = this.#beforeDiscountAmount - 1000;
+  }
+
+  specialDayDiscount() {
+    if (this.#specialDayDiscount !== 0)
+      return `특별 할인: ${formatCurrency(this.#specialDayDiscount)}원`;
     return false;
   }
 }
