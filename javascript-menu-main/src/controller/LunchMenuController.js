@@ -17,7 +17,6 @@ class LunchMenuController {
 
   start() {
     this.#outputView.printStartString();
-    
 
     return this.#inputCoachName();
   }
