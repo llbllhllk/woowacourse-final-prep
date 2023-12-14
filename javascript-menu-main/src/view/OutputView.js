@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  printString() {
-    Console.print();
+  printStartString() {
+    Console.print('점심 메뉴 추천을 시작합니다.\n');
   },
 };
 
