@@ -14,6 +14,7 @@ class EventController {
   }
 
   start() {
+    this.#outputView.printGreetingString();
     return this.#inputVisitDate();
   }
 
