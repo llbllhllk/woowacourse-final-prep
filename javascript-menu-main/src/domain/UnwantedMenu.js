@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class UnwantedMenu {
   #formattedUnwantedMenu;
 
@@ -11,13 +14,12 @@ class UnwantedMenu {
   }
 
   #validate(unwantedMenu) {
-    if (unwantedMenu.length > 2)
-      throw new Error('[ERROR] 최소 0개, 최대 2개의 못먹는 메뉴가 있어야합니다.');
+    if (unwantedMenu.length > CONSTANTS.unwantedMenu.max) throw new Error(ERROR.unwantedMenu.range);
   }
 
   #formatUnwantedMenu(unwantedMenu) {
     return unwantedMenu
-      .split(',')
+      .split(CONSTANTS.string.separator)
       .map(element => element.trim())
       .filter(Boolean);
   }

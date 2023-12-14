@@ -11,6 +11,10 @@ const random = Object.freeze({
   numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 });
 
+const unwantedMenu = Object.freeze({
+  max: 2,
+});
+
 const coach = Object.freeze({
   nameMinLength: 2,
   nameMaxLength: 4,
@@ -32,6 +36,7 @@ const CONSTANTS = Object.freeze({
   random,
   string,
   index,
+  unwantedMenu,
 });
 
 export default CONSTANTS;

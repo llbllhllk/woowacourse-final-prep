@@ -3,8 +3,13 @@ const coachName = Object.freeze({
   range: '[ERROR] 최소 2명, 최대 5명의 코치가 있어야합니다.',
 });
 
+const unwantedMenu = Object.freeze({
+  range: '[ERROR] 최소 0개, 최대 2개의 못먹는 메뉴가 있어야합니다.',
+});
+
 const ERROR = Object.freeze({
   coachName,
+  unwantedMenu,
 });
 
 export default ERROR;
