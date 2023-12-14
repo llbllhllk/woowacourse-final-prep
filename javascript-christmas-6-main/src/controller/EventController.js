@@ -74,6 +74,9 @@ class EventController {
 
     const emptyBenefitString = this.#eventService.emptyBenefit();
 
+    this.#outputView.printBenefitHeaderString();
+    if (emptyBenefitString === '없음')
+      return this.#outputView.printEmptyBenefitString(emptyBenefitString);
     if (!emptyBenefitString) {
       return this.#outputView.printBenefitLogString(
         ddayDiscountString,
@@ -83,7 +86,7 @@ class EventController {
         giftMenuDiscountString,
       );
     }
-    return this.#outputView.printEmptyBenefitString(emptyBenefitString);
+    emptyBenefitString;
   }
 
   #printTotalDiscount() {

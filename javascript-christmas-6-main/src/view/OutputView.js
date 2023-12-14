@@ -51,6 +51,10 @@ const OutputView = {
     Console.print(emptyBenefitString);
   },
 
+  printBenefitHeaderString() {
+    Console.print('\n<혜택 내역>');
+  },
+  
   printBenefitLogString(
     ddayDiscountString,
     weekDayDiscountString,
@@ -58,7 +62,6 @@ const OutputView = {
     specialDayDiscountString,
     giftMenuDiscountString,
   ) {
-    Console.print('\n<혜택 내역>');
     this.printDDayDiscountString(ddayDiscountString);
     this.printWeekendDiscountString(weekDayDiscountString);
     this.printWeekendDiscountString(weekendDiscountString);

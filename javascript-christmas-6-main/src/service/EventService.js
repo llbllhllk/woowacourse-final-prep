@@ -152,10 +152,10 @@ class EventService {
 
   emptyBenefit() {
     if (
-      this.#ddayDiscount &&
-      this.#weekDayDiscount &&
-      this.#weekendDiscount &&
-      this.#specialDayDiscount &&
+      this.#ddayDiscount === 0 &&
+      this.#weekDayDiscount === 0 &&
+      this.#weekendDiscount === 0 &&
+      this.#specialDayDiscount === 0 &&
       this.#giftMenuDiscount === 0
     )
       return '없음';
