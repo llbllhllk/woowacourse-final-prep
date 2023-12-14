@@ -1,4 +1,5 @@
 import reTry from '../utils/reTry.js';
+import formatCurrency from '../utils/formatCurrency.js';
 
 class EventController {
   #eventService;
@@ -42,8 +43,8 @@ class EventController {
   }
 
   #printBeforeDiscountAmount() {
-    const beforeDiscountAmount = this.#eventService.beforeDiscountAmount();
-    console.log(beforeDiscountAmount);
+    const beforeDiscountAmount = formatCurrency(this.#eventService.beforeDiscountAmount());
+    this.#outputView.printbeforeDiscountAmountString(beforeDiscountAmount);
   }
 }
 

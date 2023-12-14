@@ -17,6 +17,11 @@ const OutputView = {
     Console.print('<주문 메뉴>');
     orderString.forEach(item => Console.print(item));
   },
+
+  printbeforeDiscountAmountString(beforeDiscountAmount) {
+    Console.print('\n<할인 전 총주문 금액>');
+    Console.print(`${beforeDiscountAmount}원`);
+  },
 };
 
 export default OutputView;
