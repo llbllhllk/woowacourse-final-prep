@@ -39,11 +39,16 @@ const OutputView = {
     if (weekendDiscountString) Console.print(weekendDiscountString);
   },
 
-  printBenefitLogString(ddayDiscountString, weekDayDiscountString, weekendDiscountString) {
+  printSpecialDayDiscountString(specialDayDiscountString) {
+    if (specialDayDiscountString) Console.print(specialDayDiscountString);
+  },
+
+  printBenefitLogString(ddayDiscountString, weekDayDiscountString, weekendDiscountString, specialDayDiscountString) {
     Console.print('\n<혜택 내역>');
     this.printDDayDiscountString(ddayDiscountString);
     this.printWeekendDiscountString(weekDayDiscountString);
     this.printWeekendDiscountString(weekendDiscountString);
+    this.printSpecialDayDiscountString(specialDayDiscountString);
   },
 };
 
