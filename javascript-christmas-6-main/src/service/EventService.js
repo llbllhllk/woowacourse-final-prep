@@ -23,7 +23,6 @@ class EventService {
     });
   }
 
-  // 할인 전 총 주문 금액을 반환하는 기능
   beforeDiscountAmount() {
     const totalAmount = this.#order.reduce((acc, [menuName, quantity]) => {
       const menu = Object.values(MENU.list)
@@ -32,6 +31,11 @@ class EventService {
       return acc + (menu ? menu.prize * quantity : 0);
     }, 0);
     return totalAmount;
+  }
+
+  giftMenu(beforeDiscountAmount) {
+    if (beforeDiscountAmount > 120000) return '샴페인 1개';
+    return '없음';
   }
 }
 

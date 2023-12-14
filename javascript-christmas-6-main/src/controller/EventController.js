@@ -43,8 +43,14 @@ class EventController {
   }
 
   #printBeforeDiscountAmount() {
-    const beforeDiscountAmount = formatCurrency(this.#eventService.beforeDiscountAmount());
-    this.#outputView.printbeforeDiscountAmountString(beforeDiscountAmount);
+    const beforeDiscountAmount = this.#eventService.beforeDiscountAmount();
+    this.#outputView.printbeforeDiscountAmountString(formatCurrency(beforeDiscountAmount));
+    return this.#printGiftMenu(beforeDiscountAmount);
+  }
+
+  #printGiftMenu(beforeDiscountAmount) {
+    const giftMenu = this.#eventService.giftMenu(beforeDiscountAmount);
+    console.log(giftMenu);
   }
 }
 
