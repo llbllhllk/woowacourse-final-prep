@@ -6,6 +6,14 @@ const InputView = {
 
     return coachName;
   },
+
+  async readUnwantedMenu(name) {
+    const unwantedMenu = await Console.readLineAsync(
+      `${name}토미(이)가 못 먹는 메뉴를 입력해 주세요.\n`,
+    );
+
+    return unwantedMenu;
+  },
 };
 
 export default InputView;
