@@ -3,7 +3,13 @@ const read = Object.freeze({
   unwantedMenu: '(이)가 못 먹는 메뉴를 입력해 주세요.\n',
 });
 
-const print = Object.freeze({});
+const print = Object.freeze({
+  start: '점심 메뉴 추천을 시작합니다.\n',
+  resultHeader: '\n메뉴 추천 결과입니다.',
+  week: '[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]',
+  end: '\n추천을 완료했습니다.',
+  separator: ' | ',
+});
 
 const MESSAGE = Object.freeze({ read, print });
 

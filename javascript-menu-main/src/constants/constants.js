@@ -15,6 +15,11 @@ const unwantedMenu = Object.freeze({
   max: 2,
 });
 
+const recommand = Object.freeze({
+  name: 0,
+  menus: 1,
+});
+
 const coach = Object.freeze({
   nameMinLength: 2,
   nameMaxLength: 4,
@@ -37,6 +42,7 @@ const CONSTANTS = Object.freeze({
   string,
   index,
   unwantedMenu,
+  recommand,
 });
 
 export default CONSTANTS;
