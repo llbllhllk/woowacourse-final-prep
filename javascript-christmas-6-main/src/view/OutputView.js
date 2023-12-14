@@ -47,6 +47,10 @@ const OutputView = {
     if (giftMenuDiscountString) Console.print(giftMenuDiscountString);
   },
 
+  printEmptyBenefitString(emptyBenefitString) {
+    Console.print(emptyBenefitString);
+  },
+
   printBenefitLogString(
     ddayDiscountString,
     weekDayDiscountString,
