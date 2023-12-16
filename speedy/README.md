@@ -20,6 +20,13 @@
 
 <br />
 
+## 비공개 저장소 제출
+1. Use this template => create a new repository
+2. settings => collaborators => add people => woowa-course 입력
+3. 개인 리포지토리로 돌아가서 해당 프로젝트를 클론한다.
+4. 무조건 `main`에 커밋한다.
+
+
 ## 👀 패키지 설치 전 node version 확인
 
 ```bash
