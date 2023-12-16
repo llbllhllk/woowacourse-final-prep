@@ -41,6 +41,9 @@ class LunchMenuController {
   #printResult() {
     this.#outputView.printResultHeaderString();
     this.#outputView.printWeekString();
+    this.#lunchMenuService.setCategories();
+    const categoriesString = this.#lunchMenuService.categoriesString();
+    this.#outputView.printCategoriesString(categoriesString);
     this.#outputView.printEndString();
   }
 }

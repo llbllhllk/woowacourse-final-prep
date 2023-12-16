@@ -13,6 +13,10 @@ const OutputView = {
     Console.print('[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]');
   },
 
+  printCategoriesString(categories) {
+    Console.print(categories);
+  },
+
   printEndString() {
     Console.print('\n추천을 완료했습니다.');
   },
