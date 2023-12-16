@@ -1,9 +1,17 @@
+import CoachNames from '../domain/CoachNames.js';
+
 class LunchMenuService {
-  // #inputs
+  #coachNames;
 
   constructor() {}
 
-  // setInputs()
+  setCoachNames(coachNames) {
+    this.#coachNames = new CoachNames(coachNames).getFormattedCoachNames();
+  }
+
+  getCoachNames() {
+    return this.#coachNames;
+  }
 }
 
 export default LunchMenuService;
