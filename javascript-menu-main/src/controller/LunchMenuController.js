@@ -32,8 +32,9 @@ class LunchMenuController {
       await coachNames.reduce(async (promise, name) => {
         await promise;
         const unwantedMenus = await this.#inputView.readUnwantedMenus(name);
+        this.#lunchMenuService.setUnwantedMenus(unwantedMenus);
 
-        console.log(unwantedMenus);
+        console.log(this.#lunchMenuService.getUnwantedMenus());
       }, Promise.resolve());
 
       return this.#inputUnwantedMenus();

@@ -1,7 +1,10 @@
 import CoachNames from '../domain/CoachNames.js';
+import UnwantedMneus from '../domain/UnwantedMenus.js';
 
 class LunchMenuService {
   #coachNames;
+
+  #unwantedMenus;
 
   constructor() {}
 
@@ -11,6 +14,14 @@ class LunchMenuService {
 
   getCoachNames() {
     return this.#coachNames;
+  }
+
+  setUnwantedMenus(unwantedMenus) {
+    this.#unwantedMenus = new UnwantedMneus(unwantedMenus).getFormattedUnwantedMenus();
+  }
+
+  getUnwantedMenus() {
+    return this.#unwantedMenus;
   }
 }
 

@@ -6,7 +6,7 @@ const InputView = {
   },
 
   async readUnwantedMenus(name) {
-    return await Console.readLineAsync(`\n${name}(이)가 못 먹는 메뉴를 입력해 주세요.`);
+    return await Console.readLineAsync(`\n${name}(이)가 못 먹는 메뉴를 입력해 주세요.\n`);
   },
 };
 
