@@ -14,6 +14,7 @@ class LunchMenuController {
   }
 
   start() {
+    this.#outputView.printStartString();
     return this.#inputCoachNames();
   }
 
@@ -38,7 +39,7 @@ class LunchMenuController {
   }
 
   #printResult() {
-    this.#outputView.printStartString();
+    this.#outputView.printResultHeaderString();
   }
 }
 
