@@ -20,7 +20,21 @@ class LunchMenuController {
   async #inputCoachNames() {
     return reTry(async () => {
       const coachNames = await this.#inputView.readCoachNames();
-      console.log(coachNames);
+
+      return this.#inputUnwantedMenus(coachNames);
+    });
+  }
+
+  async #inputUnwantedMenus(coachNames) {
+    return reTry(async () => {
+      await coachNames.reduce(async (promise, name) => {
+        await promise;
+        const unwantedMenus = await this.#inputView.readUnwantedMenus(name);
+
+        console.log(unwantedMenus);
+      }, Promise.resolve());
+
+      return this.#inputUnwantedMenus();
     });
   }
 }
