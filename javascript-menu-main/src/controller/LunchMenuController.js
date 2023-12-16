@@ -21,24 +21,24 @@ class LunchMenuController {
     return reTry(async () => {
       const coachNames = await this.#inputView.readCoachNames();
       this.#lunchMenuService.setCoachNames(coachNames);
-
       return this.#inputUnwantedMenus();
     });
   }
 
   async #inputUnwantedMenus() {
-    const coachNames = this.#lunchMenuService.getCoachNames();
     return reTry(async () => {
+      const coachNames = this.#lunchMenuService.getCoachNames();
       await coachNames.reduce(async (promise, name) => {
         await promise;
         const unwantedMenus = await this.#inputView.readUnwantedMenus(name);
         this.#lunchMenuService.setUnwantedMenus(unwantedMenus);
-
-        console.log(this.#lunchMenuService.getUnwantedMenus());
       }, Promise.resolve());
-
-      return this.#inputUnwantedMenus();
+      return this.#printResult();
     });
+  }
+
+  #printResult() {
+    this.#outputView.printStartString();
   }
 }
 

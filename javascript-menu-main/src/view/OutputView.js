@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  printString() {
-    Console.print();
+  printStartString() {
+    Console.print('\n메뉴 추천 결과입니다.');
   },
 };
 
