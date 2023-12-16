@@ -41,6 +41,7 @@ class LunchMenuController {
   #printResult() {
     this.#outputView.printResultHeaderString();
     this.#outputView.printWeekString();
+    this.#outputView.printEndString();
   }
 }
 
